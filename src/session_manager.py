@@ -243,14 +243,19 @@ class SessionManager:
             action = WRITE if reward > 0.7 else NOOP
 
         # 5. Execute Memory Action
-        if action != NOOP:
-            action_vec = self.get_hidden_state(code)
-            strength = ACTION_STRENGTHS.get(action, 1.0)
-            
-            for mem in self.memory_modules.values():
-                if hasattr(mem, "reward_update_with_strength"):
-                    mem.reward_update_with_strength(state_vec, action_vec, reward, strength)
-                else:
+        if self.policy is not None:
+            if action == WRITE and reward >= 0.7:
+                action_vec = self.get_hidden_state(code)
+                for mem in self.memory_modules.values():
+                    mem.reward_update(state_vec, action_vec, reward)
+            elif action == SUPPRESS and reward < 0.3:
+                action_vec = self.get_hidden_state(code)
+                for mem in self.memory_modules.values():
+                    mem.reward_update(state_vec, action_vec, -0.5)  # negative update to suppress representation
+        else:
+            if action == WRITE:
+                action_vec = self.get_hidden_state(code)
+                for mem in self.memory_modules.values():
                     mem.reward_update(state_vec, action_vec, reward)
 
         # Log trajectory

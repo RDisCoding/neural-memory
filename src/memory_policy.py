@@ -160,51 +160,27 @@ def compute_partial_credit_trend(reward_history: list) -> float:
 
 def compute_policy_rewards(trajectory_data: List[Dict], K: int = 1):
     """
-    Dense, immediate policy reward with counterfactual for NOOP.
+    Dense, immediate policy reward based directly on task success/failure.
     
-    WRITE:    policy_reward = next_session_reward - current_reward
-              (positive = write helped, negative = write hurt)
-    SUPPRESS: policy_reward = -(next_session_reward)
-              (penalise if the problem would have passed anyway)
-    NOOP:     policy_reward = -(next_session_reward - current_reward)
-              (counterfactual: if improvement happened WITHOUT writing,
-               NOOP was fine. If degradation happened, NOOP was fine too.
-               But if next session improved and we didn't write, we missed
-               an opportunity — that's negative for NOOP.)
+    WRITE:    policy_reward = task_reward if task_reward >= 0.7 else -0.3
+              (reward writing successful approaches, penalise writing failures)
+    SUPPRESS: policy_reward = 1.0 - task_reward
+              (reward suppressing failures)
+    NOOP:     policy_reward = 0.0
+              (neutral)
     """
-    reward_lookup = {}
     for traj in trajectory_data:
-        pid = traj['problem_id']
-        sess = traj['session']
-        if pid not in reward_lookup:
-            reward_lookup[pid] = {}
-        reward_lookup[pid][sess] = traj['reward']
-
-    for traj in trajectory_data:
-        pid = traj['problem_id']
-        sess = traj['session']
-        current_reward = traj['reward']
+        task_reward = traj['reward']
         action = traj['action']
 
-        if sess + 1 in reward_lookup.get(pid, {}):
-            next_reward = reward_lookup[pid][sess + 1]
-            delta = next_reward - current_reward
-            
-            if action == WRITE:
-                # Write helped if next session improved
-                traj['policy_reward'] = delta
-            elif action == SUPPRESS:
-                # Suppress is bad if the problem would have passed
-                traj['policy_reward'] = -next_reward
-            else:  # NOOP
-                # Counterfactual: if things improved without writing,
-                # NOOP was neutral. If things degraded, NOOP was correct
-                # (we avoided writing bad patterns). If things could have
-                # improved with a write, NOOP missed an opportunity.
-                # Use negative delta: NOOP is penalised when improvement
-                # could have happened (delta > 0 → we should have written)
-                traj['policy_reward'] = -delta * 0.5
-        else:
+        if action == WRITE:
+            if task_reward >= 0.7:
+                traj['policy_reward'] = task_reward
+            else:
+                traj['policy_reward'] = -0.3
+        elif action == SUPPRESS:
+            traj['policy_reward'] = 1.0 - task_reward
+        else:  # NOOP
             traj['policy_reward'] = 0.0
 
 
@@ -250,14 +226,14 @@ def train_policy(trajectory_data: List[Dict],
             sampled_rewards = []
             for a in sampled_actions:
                 a = a.item()
-                if a == logged_action:
-                    sampled_rewards.append(policy_reward)
-                elif a == NOOP:
-                    sampled_rewards.append(0.0)
-                elif a == WRITE:
-                    sampled_rewards.append(policy_reward)
-                else: # SUPPRESS
-                    sampled_rewards.append(-abs(policy_reward))
+                task_reward = traj['reward']
+                if a == WRITE:
+                    r = task_reward if task_reward >= 0.7 else -0.3
+                elif a == SUPPRESS:
+                    r = 1.0 - task_reward
+                else:  # NOOP
+                    r = 0.0
+                sampled_rewards.append(r)
                     
             sampled_rewards = torch.tensor(sampled_rewards)
             
@@ -407,12 +383,12 @@ if __name__ == "__main__":
         {'problem_id': 'P1', 'session': 3, 'reward': 1.0, 'features': f.tolist(), 'action': WRITE},
     ]
     compute_policy_rewards(fake_trajectory, K=1)
-    # P1 session 1: action=NOOP, delta=0.5-0.0=0.5, reward = -0.5*0.5 = -0.25
-    assert abs(fake_trajectory[0]['policy_reward'] - (-0.25)) < 0.01
-    # P1 session 2: action=WRITE, delta=1.0-0.5=0.5, reward = 0.5
-    assert abs(fake_trajectory[1]['policy_reward'] - 0.5) < 0.01
-    # P1 session 3: no future → 0.0
-    assert fake_trajectory[2]['policy_reward'] == 0.0
+    # P1 session 1: action=NOOP, reward=0.0 -> policy_reward = 0.0
+    assert abs(fake_trajectory[0]['policy_reward'] - 0.0) < 0.01
+    # P1 session 2: action=WRITE, reward=0.5 (<0.7) -> policy_reward = -0.3
+    assert abs(fake_trajectory[1]['policy_reward'] - (-0.3)) < 0.01
+    # P1 session 3: action=WRITE, reward=1.0 (>=0.7) -> policy_reward = 1.0
+    assert abs(fake_trajectory[2]['policy_reward'] - 1.0) < 0.01
     print(f"  PASS policy reward computation")
 
     # Test 5: GRPO training doesn't crash
