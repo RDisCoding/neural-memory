@@ -1,0 +1,384 @@
+Time
+#
+Log Message
+8.8s	1	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.8s	2	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.8s	3	0.00s - to python to disable frozen modules.
+8.8s	4	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+9.6s	5	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+9.6s	6	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+9.6s	7	0.00s - to python to disable frozen modules.
+9.6s	8	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+14.4s	9	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 69.8 MB/s eta 0:00:00
+14.6s	10	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 90.2 MB/s eta 0:00:00
+14.6s	11	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 69.8 MB/s eta 0:00:00
+14.6s	12	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 90.2 MB/s eta 0:00:00
+18.3s	13	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+18.3s	14	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+18.3s	15	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+18.3s	16	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+18.3s	17	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+18.3s	18	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+18.3s	19	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+18.3s	20	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+18.3s	21	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	22	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+19.3s	23	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+19.3s	24	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	25	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	26	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+19.3s	27	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	28	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	29	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+19.3s	30	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	31	
+19.3s	32	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+19.3s	33	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+19.3s	34	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	35	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	36	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+19.3s	37	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	38	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+19.3s	39	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+19.3s	40	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+24.5s	41	Env ready. CUDA: True
+24.5s	42	Device: Tesla T4
+24.5s	43	Source files copied: ['model_surgery.py', 'memory_policy.py', 'session_manager.py', 'memory_module.py', 'sandbox.py', 'eval.py']
+24.7s	44	Running isolation tests on NeuralMemoryModule...
+24.7s	45	(All must pass before attaching to any LLM)
+24.7s	46	
+26.0s	47	  PASS associative_storage: retrieval_error=0.0995
+26.7s	48	  PASS surprise_decay: 2.2200 -> 1.2913
+28.6s	49	  PASS reward_learning: all 3 pairs within 0.15 tolerance
+29.1s	50	  PASS generalisation: base=0.94, similar=0.92, diff=0.12
+29.8s	51	  PASS weight_norm_stability: 12.326 -> 7.879 (no NaN/Inf, retained >64% of initial norm)
+30.1s	52	         post-stress retrieval error: 0.1324 (functional: YES)
+30.1s	53	
+30.1s	54	All isolation tests passed. Safe to proceed to LLM integration.
+30.1s	55	
+30.1s	56	Testing memory_policy...
+30.1s	57	memory_policy imported successfully.
+57.0s	58	`torch_dtype` is deprecated! Use `dtype` instead!
+57.0s	59	
+57.0s	60	`torch_dtype` is deprecated! Use `dtype` instead!
+89.0s	61	Model loaded. Device: cuda:0
+91.0s	62	Perplexity before injection: 1.7878
+91.5s	63	  Memory injected at layer 4 (device=cuda:0, dtype=torch.float16)
+92.1s	64	  Memory injected at layer 8 (device=cuda:0, dtype=torch.float16)
+92.6s	65	  Memory injected at layer 16 (device=cuda:1, dtype=torch.float16)
+93.1s	66	  Memory injected at layer 24 (device=cuda:1, dtype=torch.float16)
+93.1s	67	  Trainable: 191,158,280 / 2,805,500,168 (6.814%)
+93.6s	68	Perplexity after injection:  1.7894
+93.6s	69	Delta: 0.09%  (must be < 1% to proceed)
+93.6s	70	
+93.6s	71	Gate OK. Safe to proceed.
+93.8s	72	Local file not found — downloading from HuggingFace datasets...
+97.3s	73	Saved 164 problems → /kaggle/working/problems/humaneval_raw.json
+97.3s	74	Calibrating 100 problems (target pass rate: 0.3–0.7)...
+97.3s	75	
+174.9s	76	  DROP HumanEval/0: too easy  (pass_rate=1.00)
+251.9s	77	  DROP HumanEval/1: too easy  (pass_rate=1.00)
+309.1s	78	  KEEP HumanEval/2: pass_rate=0.33
+383.0s	79	  KEEP HumanEval/3: pass_rate=0.67
+460.5s	80	  DROP HumanEval/4: too easy  (pass_rate=1.00)
+537.6s	81	  KEEP HumanEval/5: pass_rate=0.33
+614.5s	82	  DROP HumanEval/6: too hard  (pass_rate=0.00)
+691.2s	83	  DROP HumanEval/7: too hard  (pass_rate=0.00)
+768.2s	84	  KEEP HumanEval/8: pass_rate=0.67
+844.7s	85	  DROP HumanEval/9: too easy  (pass_rate=1.00)
+921.2s	86	  DROP HumanEval/10: too hard  (pass_rate=0.00)
+997.2s	87	  DROP HumanEval/11: too easy  (pass_rate=1.00)
+1073.6s	88	  DROP HumanEval/12: too easy  (pass_rate=1.00)
+1149.6s	89	  KEEP HumanEval/13: pass_rate=0.67
+1225.3s	90	  KEEP HumanEval/14: pass_rate=0.33
+1291.4s	91	  DROP HumanEval/15: too easy  (pass_rate=1.00)
+1367.4s	92	  DROP HumanEval/16: too easy  (pass_rate=1.00)
+1443.9s	93	  DROP HumanEval/17: too hard  (pass_rate=0.00)
+1520.7s	94	  KEEP HumanEval/18: pass_rate=0.67
+1592.5s	95	  DROP HumanEval/19: too hard  (pass_rate=0.00)
+1669.1s	96	  DROP HumanEval/20: too hard  (pass_rate=0.00)
+1745.0s	97	  DROP HumanEval/21: too hard  (pass_rate=0.00)
+1821.3s	98	  DROP HumanEval/22: too easy  (pass_rate=1.00)
+1889.2s	99	  DROP HumanEval/23: too easy  (pass_rate=1.00)
+1965.4s	100	  KEEP HumanEval/24: pass_rate=0.67
+2041.4s	101	  DROP HumanEval/25: too easy  (pass_rate=1.00)
+2117.2s	102	  DROP HumanEval/26: too hard  (pass_rate=0.00)
+2193.0s	103	  DROP HumanEval/27: too easy  (pass_rate=1.00)
+2251.8s	104	  DROP HumanEval/28: too hard  (pass_rate=0.00)
+2327.8s	105	  KEEP HumanEval/29: pass_rate=0.33
+2399.0s	106	  DROP HumanEval/30: too easy  (pass_rate=1.00)
+2475.1s	107	  DROP HumanEval/31: too easy  (pass_rate=1.00)
+2551.7s	108	  DROP HumanEval/32: too hard  (pass_rate=0.00)
+2628.5s	109	  DROP HumanEval/33: too hard  (pass_rate=0.00)
+2701.9s	110	  DROP HumanEval/34: too easy  (pass_rate=1.00)
+2777.5s	111	  DROP HumanEval/35: too easy  (pass_rate=1.00)
+2853.1s	112	  DROP HumanEval/36: too hard  (pass_rate=0.00)
+2929.1s	113	  DROP HumanEval/37: too hard  (pass_rate=0.00)
+3005.2s	114	  DROP HumanEval/38: too hard  (pass_rate=0.00)
+3082.0s	115	  DROP HumanEval/39: too hard  (pass_rate=0.00)
+3158.3s	116	  DROP HumanEval/40: too hard  (pass_rate=0.00)
+3234.3s	117	  DROP HumanEval/41: too hard  (pass_rate=0.00)
+3310.1s	118	  DROP HumanEval/42: too easy  (pass_rate=1.00)
+3386.2s	119	  KEEP HumanEval/43: pass_rate=0.33
+3462.1s	120	  DROP HumanEval/44: too hard  (pass_rate=0.00)
+3536.3s	121	  DROP HumanEval/45: too easy  (pass_rate=1.00)
+3611.8s	122	  DROP HumanEval/46: too hard  (pass_rate=0.00)
+3687.9s	123	  DROP HumanEval/47: too easy  (pass_rate=1.00)
+3763.9s	124	  DROP HumanEval/48: too easy  (pass_rate=1.00)
+3840.0s	125	  KEEP HumanEval/49: pass_rate=0.33
+3916.1s	126	  DROP HumanEval/50: too hard  (pass_rate=0.00)
+3992.3s	127	  DROP HumanEval/51: too easy  (pass_rate=1.00)
+4066.5s	128	  DROP HumanEval/52: too hard  (pass_rate=0.00)
+4142.3s	129	  DROP HumanEval/53: too hard  (pass_rate=0.00)
+4217.5s	130	  KEEP HumanEval/54: pass_rate=0.67
+4293.1s	131	  DROP HumanEval/55: too easy  (pass_rate=1.00)
+4370.5s	132	  DROP HumanEval/56: too easy  (pass_rate=1.00)
+4444.5s	133	  DROP HumanEval/57: too easy  (pass_rate=1.00)
+4520.3s	134	  DROP HumanEval/58: too easy  (pass_rate=1.00)
+4597.1s	135	  DROP HumanEval/59: too hard  (pass_rate=0.00)
+4674.8s	136	  DROP HumanEval/60: too easy  (pass_rate=1.00)
+4750.8s	137	  DROP HumanEval/61: too easy  (pass_rate=1.00)
+4827.5s	138	  DROP HumanEval/62: too hard  (pass_rate=0.00)
+4904.0s	139	  DROP HumanEval/63: too hard  (pass_rate=0.00)
+4980.4s	140	  DROP HumanEval/64: too hard  (pass_rate=0.00)
+5057.5s	141	  DROP HumanEval/65: too hard  (pass_rate=0.00)
+5135.6s	142	  KEEP HumanEval/66: pass_rate=0.67
+5212.5s	143	  DROP HumanEval/67: too hard  (pass_rate=0.00)
+5289.7s	144	  DROP HumanEval/68: too easy  (pass_rate=1.00)
+5367.1s	145	  DROP HumanEval/69: too easy  (pass_rate=1.00)
+5443.9s	146	  DROP HumanEval/70: too hard  (pass_rate=0.00)
+5520.3s	147	  DROP HumanEval/71: too hard  (pass_rate=0.00)
+5596.9s	148	  DROP HumanEval/72: too easy  (pass_rate=1.00)
+5673.3s	149	  KEEP HumanEval/73: pass_rate=0.33
+5750.1s	150	  DROP HumanEval/74: too hard  (pass_rate=0.00)
+5825.9s	151	  DROP HumanEval/75: too hard  (pass_rate=0.00)
+5902.5s	152	  DROP HumanEval/76: too hard  (pass_rate=0.00)
+5975.7s	153	  DROP HumanEval/77: too hard  (pass_rate=0.00)
+6053.0s	154	  DROP HumanEval/78: too easy  (pass_rate=1.00)
+6130.4s	155	  DROP HumanEval/79: too easy  (pass_rate=1.00)
+6207.1s	156	  DROP HumanEval/80: too hard  (pass_rate=0.00)
+6283.5s	157	  DROP HumanEval/81: too hard  (pass_rate=0.00)
+6358.8s	158	  DROP HumanEval/82: too hard  (pass_rate=0.00)
+6434.7s	159	  DROP HumanEval/83: too hard  (pass_rate=0.00)
+6510.5s	160	  DROP HumanEval/84: too hard  (pass_rate=0.00)
+6585.6s	161	  DROP HumanEval/85: too hard  (pass_rate=0.00)
+6662.0s	162	  DROP HumanEval/86: too easy  (pass_rate=1.00)
+6737.5s	163	  DROP HumanEval/87: too hard  (pass_rate=0.00)
+6809.6s	164	  DROP HumanEval/88: too hard  (pass_rate=0.00)
+6884.9s	165	  KEEP HumanEval/89: pass_rate=0.67
+6958.0s	166	  DROP HumanEval/90: too hard  (pass_rate=0.00)
+7031.5s	167	  DROP HumanEval/91: too hard  (pass_rate=0.00)
+7106.3s	168	  DROP HumanEval/92: too hard  (pass_rate=0.00)
+7180.5s	169	  KEEP HumanEval/93: pass_rate=0.33
+7253.9s	170	  DROP HumanEval/94: too hard  (pass_rate=0.00)
+7326.5s	171	  DROP HumanEval/95: too hard  (pass_rate=0.00)
+7399.2s	172	  DROP HumanEval/96: too hard  (pass_rate=0.00)
+7469.4s	173	  DROP HumanEval/97: too easy  (pass_rate=1.00)
+7541.6s	174	  DROP HumanEval/98: too easy  (pass_rate=1.00)
+7607.9s	175	  DROP HumanEval/99: too hard  (pass_rate=0.00)
+7607.9s	176	
+7607.9s	177	Calibrated set: 16 / 100 problems
+7607.9s	178	Saved calibrated set → /kaggle/working/problems/calibrated_20.json
+7607.9s	179	
+7607.9s	180	Using 16 problems.
+7608.1s	181	
+7608.1s	182	==================================================
+7608.1s	183	TRAJECTORY COLLECTION — SESSION 1/5
+7608.1s	184	==================================================
+7608.1s	185	No prior memory state. Starting fresh.
+7644.9s	186	  [FAIL] HumanEval/2: reward=0.00 (action=4)
+7679.3s	187	  [FAIL] HumanEval/3: reward=0.00 (action=4)
+7724.9s	188	  [PASS] HumanEval/5: reward=1.00 (action=1)
+7763.9s	189	  [FAIL] HumanEval/8: reward=0.00 (action=4)
+7802.7s	190	  [PASS] HumanEval/13: reward=1.00 (action=1)
+7838.0s	191	  [FAIL] HumanEval/14: reward=0.00 (action=4)
+7879.8s	192	  [PASS] HumanEval/18: reward=1.00 (action=1)
+7915.1s	193	  [FAIL] HumanEval/24: reward=0.00 (action=4)
+7955.4s	194	  [PASS] HumanEval/29: reward=1.00 (action=1)
+8004.1s	195	  [PASS] HumanEval/43: reward=1.00 (action=1)
+8041.5s	196	  [FAIL] HumanEval/49: reward=0.14 (action=4)
+8088.2s	197	  [FAIL] HumanEval/54: reward=0.86 (action=1)
+8126.7s	198	  [FAIL] HumanEval/66: reward=0.30 (action=4)
+8168.1s	199	  [FAIL] HumanEval/73: reward=0.38 (action=4)
+8213.0s	200	  [PASS] HumanEval/89: reward=1.00 (action=1)
+8260.1s	201	  [PASS] HumanEval/93: reward=1.00 (action=1)
+8260.6s	202	Memory saved: memory_20260528_204011.pt
+8260.6s	203	
+8260.6s	204	Session complete: 43.8% (7/16)
+8260.6s	205	Log: session_20260528_204011.json
+8260.6s	206	
+8260.6s	207	── Memory Diagnostics ──
+8260.6s	208	  Layer 4: weight_norm=2.7704
+8260.6s	209	  Layer 8: weight_norm=2.0193
+8260.6s	210	  Layer 16: weight_norm=0.4919
+8260.6s	211	  Layer 24: weight_norm=6.6903
+8260.6s	212	
+8260.6s	213	==================================================
+8260.6s	214	TRAJECTORY COLLECTION — SESSION 2/5
+8260.6s	215	==================================================
+8260.9s	216	Loaded memory: memory_20260528_204011.pt
+8291.3s	217	  [FAIL] HumanEval/2: reward=0.00 (action=4)
+8334.5s	218	  [PASS] HumanEval/3: reward=1.00 (action=1)
+8372.6s	219	  [FAIL] HumanEval/5: reward=0.00 (action=4)
+8412.0s	220	  [FAIL] HumanEval/8: reward=0.60 (action=4)
+8450.4s	221	  [PASS] HumanEval/13: reward=1.00 (action=1)
+8486.3s	222	  [FAIL] HumanEval/14: reward=0.00 (action=4)
+8528.4s	223	  [PASS] HumanEval/18: reward=1.00 (action=1)
+8563.8s	224	  [FAIL] HumanEval/24: reward=0.00 (action=4)
+8601.5s	225	  [FAIL] HumanEval/29: reward=0.00 (action=4)
+8652.7s	226	  [PASS] HumanEval/43: reward=1.00 (action=1)
+8691.6s	227	  [FAIL] HumanEval/49: reward=0.14 (action=4)
+8740.4s	228	  [PASS] HumanEval/54: reward=1.00 (action=1)
+8779.8s	229	  [FAIL] HumanEval/66: reward=0.30 (action=4)
+8831.0s	230	  [PASS] HumanEval/73: reward=1.00 (action=1)
+8870.3s	231	  [FAIL] HumanEval/89: reward=0.00 (action=4)
+8918.1s	232	  [PASS] HumanEval/93: reward=1.00 (action=1)
+8918.8s	233	Memory saved: memory_20260528_205109.pt
+8918.8s	234	
+8918.8s	235	Session complete: 43.8% (7/16)
+8918.8s	236	Log: session_20260528_205109.json
+8918.8s	237	
+8918.8s	238	── Memory Diagnostics ──
+8918.8s	239	  Layer 4: weight_norm=2.0250
+8918.8s	240	  Layer 8: weight_norm=1.9572
+8918.8s	241	  Layer 16: weight_norm=0.3538
+8918.8s	242	  Layer 24: weight_norm=4.3338
+8918.8s	243	
+8918.8s	244	==================================================
+8918.8s	245	TRAJECTORY COLLECTION — SESSION 3/5
+8918.8s	246	==================================================
+8919.0s	247	Loaded memory: memory_20260528_205109.pt
+8948.2s	248	  [FAIL] HumanEval/2: reward=0.00 (action=4)
+8993.6s	249	  [PASS] HumanEval/3: reward=1.00 (action=1)
+9037.5s	250	  [PASS] HumanEval/5: reward=1.00 (action=1)
+9076.9s	251	  [FAIL] HumanEval/8: reward=0.00 (action=4)
+9117.4s	252	  [PASS] HumanEval/13: reward=1.00 (action=1)
+9154.7s	253	  [FAIL] HumanEval/14: reward=0.00 (action=4)
+9197.1s	254	  [FAIL] HumanEval/18: reward=0.75 (action=1)
+9232.8s	255	  [FAIL] HumanEval/24: reward=0.00 (action=4)
+9270.6s	256	  [FAIL] HumanEval/29: reward=0.00 (action=4)
+9312.2s	257	  [FAIL] HumanEval/43: reward=0.67 (action=4)
+9351.4s	258	  [FAIL] HumanEval/49: reward=0.14 (action=4)
+9400.0s	259	  [PASS] HumanEval/54: reward=1.00 (action=1)
+9442.8s	260	  [PASS] HumanEval/66: reward=1.00 (action=1)
+9492.9s	261	  [FAIL] HumanEval/73: reward=0.88 (action=1)
+9538.2s	262	  [PASS] HumanEval/89: reward=1.00 (action=1)
+9584.9s	263	  [PASS] HumanEval/93: reward=1.00 (action=1)
+9585.4s	264	Memory saved: memory_20260528_210215.pt
+9585.4s	265	
+9585.4s	266	Session complete: 43.8% (7/16)
+9585.4s	267	Log: session_20260528_210216.json
+9585.4s	268	
+9585.4s	269	── Memory Diagnostics ──
+9585.4s	270	  Layer 4: weight_norm=2.0308
+9585.4s	271	  Layer 8: weight_norm=1.9803
+9585.4s	272	  Layer 16: weight_norm=0.4579
+9585.4s	273	  Layer 24: weight_norm=5.5951
+9585.4s	274	
+9585.4s	275	==================================================
+9585.4s	276	TRAJECTORY COLLECTION — SESSION 4/5
+9585.4s	277	==================================================
+9585.6s	278	Loaded memory: memory_20260528_210215.pt
+9613.9s	279	  [FAIL] HumanEval/2: reward=0.00 (action=4)
+9662.4s	280	  [PASS] HumanEval/3: reward=1.00 (action=1)
+9707.2s	281	  [PASS] HumanEval/5: reward=1.00 (action=1)
+9753.6s	282	  [PASS] HumanEval/8: reward=1.00 (action=1)
+9794.7s	283	  [PASS] HumanEval/13: reward=1.00 (action=1)
+9835.2s	284	  [PASS] HumanEval/14: reward=1.00 (action=1)
+9878.8s	285	  [FAIL] HumanEval/18: reward=0.75 (action=1)
+9914.3s	286	  [FAIL] HumanEval/24: reward=0.00 (action=4)
+9952.1s	287	  [FAIL] HumanEval/29: reward=0.00 (action=4)
+10001.7s	288	  [PASS] HumanEval/43: reward=1.00 (action=1)
+10040.4s	289	  [FAIL] HumanEval/49: reward=0.14 (action=4)
+10087.3s	290	  [PASS] HumanEval/54: reward=1.00 (action=1)
+10131.3s	291	  [PASS] HumanEval/66: reward=1.00 (action=1)
+10172.1s	292	  [FAIL] HumanEval/73: reward=0.25 (action=4)
+10216.7s	293	  [PASS] HumanEval/89: reward=1.00 (action=1)
+10255.4s	294	  [FAIL] HumanEval/93: reward=0.40 (action=4)
+10256.0s	295	Memory saved: memory_20260528_211326.pt
+10256.0s	296	
+10256.0s	297	Session complete: 56.2% (9/16)
+10256.0s	298	Log: session_20260528_211327.json
+10256.0s	299	
+10256.0s	300	── Memory Diagnostics ──
+10256.0s	301	  Layer 4: weight_norm=2.1228
+10256.0s	302	  Layer 8: weight_norm=1.7494
+10256.0s	303	  Layer 16: weight_norm=0.3008
+10256.0s	304	  Layer 24: weight_norm=2.8773
+10256.0s	305	
+10256.0s	306	==================================================
+10256.0s	307	TRAJECTORY COLLECTION — SESSION 5/5
+10256.0s	308	==================================================
+10256.2s	309	Loaded memory: memory_20260528_211326.pt
+10285.1s	310	  [FAIL] HumanEval/2: reward=0.00 (action=4)
+10332.9s	311	  [PASS] HumanEval/3: reward=1.00 (action=1)
+10372.7s	312	  [FAIL] HumanEval/5: reward=0.00 (action=4)
+10419.3s	313	  [PASS] HumanEval/8: reward=1.00 (action=1)
+10459.8s	314	  [PASS] HumanEval/13: reward=1.00 (action=1)
+10497.8s	315	  [FAIL] HumanEval/14: reward=0.00 (action=4)
+10541.6s	316	  [PASS] HumanEval/18: reward=1.00 (action=1)
+10579.2s	317	  [FAIL] HumanEval/24: reward=0.00 (action=4)
+10618.9s	318	  [FAIL] HumanEval/29: reward=0.00 (action=4)
+10661.2s	319	  [FAIL] HumanEval/43: reward=0.56 (action=4)
+10700.3s	320	  [FAIL] HumanEval/49: reward=0.29 (action=4)
+10750.1s	321	  [PASS] HumanEval/54: reward=1.00 (action=1)
+10794.8s	322	  [PASS] HumanEval/66: reward=1.00 (action=1)
+10836.3s	323	  [FAIL] HumanEval/73: reward=0.25 (action=4)
+10882.2s	324	  [PASS] HumanEval/89: reward=1.00 (action=1)
+10929.7s	325	  [PASS] HumanEval/93: reward=1.00 (action=1)
+10930.0s	326	Memory saved: memory_20260528_212440.pt
+10930.0s	327	
+10930.0s	328	Session complete: 50.0% (8/16)
+10930.0s	329	Log: session_20260528_212441.json
+10930.0s	330	
+10930.0s	331	── Memory Diagnostics ──
+10930.0s	332	  Layer 4: weight_norm=2.0354
+10930.0s	333	  Layer 8: weight_norm=1.9770
+10930.0s	334	  Layer 16: weight_norm=0.2983
+10930.0s	335	  Layer 24: weight_norm=3.6943
+10930.0s	336	
+10930.0s	337	Collected 80 trajectory points.
+10930.1s	338	Computed delayed policy rewards. 33/80 points have non-zero reward.
+10930.2s	339	Training MemoryPolicy via GRPO...
+10930.2s	340	Training on 33/80 trajectory points with nonzero policy reward
+10933.4s	341	Traceback (most recent call last):
+10933.4s	342	  File "<string>", line 1, in <module>
+10933.4s	343	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 131, in execute_notebook
+10933.4s	344	    raise_for_execution_errors(nb, output_path)
+10933.4s	345	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+10933.4s	346	    raise error
+10933.4s	347	papermill.exceptions.PapermillExecutionError: 
+10933.4s	348	---------------------------------------------------------------------------
+10933.4s	349	Exception encountered at "In [9]":
+10933.4s	350	---------------------------------------------------------------------------
+10933.4s	351	TypeError                                 Traceback (most recent call last)
+10933.4s	352	/tmp/ipykernel_23/2439558866.py in <cell line: 0>()
+10933.4s	353	      3 
+10933.4s	354	      4 print("Training MemoryPolicy via GRPO...")
+10933.4s	355	----> 5 policy = train_policy(trajectory_data, n_epochs=200, lr=1e-3, K_samples=8, print_every=50)
+10933.4s	356	      6 print("Training complete.")
+10933.4s	357	
+10933.4s	358	/kaggle/working/src/memory_policy.py in train_policy(trajectory_data, n_epochs, lr, K_samples, print_every)
+10933.4s	359	    309     losses = []
+10933.4s	360	    310     for epoch in range(n_epochs):
+10933.4s	361	--> 311         loss = grpo_update(policy, optimizer, trajectory_data, K_samples)
+10933.4s	362	    312         losses.append(loss)
+10933.4s	363	    313 
+10933.4s	364	
+10933.4s	365	/kaggle/working/src/memory_policy.py in grpo_update(policy, optimizer, trajectory_data, K_samples, clip_eps)
+10933.4s	366	    273         loss = loss / max(K_samples, 1)
+10933.4s	367	    274 
+10933.4s	368	--> 275         if torch.isnan(loss) or torch.isinf(loss):
+10933.4s	369	    276             continue
+10933.4s	370	    277 
+10933.4s	371	
+10933.4s	372	TypeError: isnan(): argument 'input' (position 1) must be Tensor, not float
+10933.4s	373	
+10935.9s	374	/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+10935.9s	375	  cells[i][c] = re.sub('\\\\\|', '|', cell)
+10936.0s	376	/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+10936.0s	377	  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+10936.8s	378	[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+10937.2s	379	[NbConvertApp] Writing 192042 bytes to __notebook__.ipynb
+10939.9s	380	[NbConvertApp] Converting notebook __notebook__.ipynb to html
+10940.9s	381	[NbConvertApp] Writing 462250 bytes to __results__.html

@@ -1,0 +1,444 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.tab-bar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.1rem;padding-bottom:.75rem;border-bottom:.5px solid var(--color-border-tertiary)}
+.tab{font-size:12px;padding:5px 12px;border-radius:12px;border:.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.on{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.panel{display:none}.panel.on{display:block}
+.lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-tertiary);margin:.85rem 0 .35rem}
+.note{padding:.55rem .8rem;border-radius:var(--border-radius-md);font-size:13px;line-height:1.6;margin:.5rem 0;border-left:2px solid}
+.ng{border-left-color:#1D9E75;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.na{border-left-color:#EF9F27;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.np{border-left-color:#7F77DD;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.nr{border-left-color:#E24B4A;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.nb{border-left-color:#185FA5;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.note strong{color:var(--color-text-primary)}
+.card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.85rem 1rem;margin-bottom:.6rem}
+.ct{font-size:14px;font-weight:500;margin-bottom:.3rem}
+.cs{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.eq{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.65rem .9rem;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.85;margin:.4rem 0;overflow-x:auto}
+.eq .c1{color:#1D9E75;font-weight:500}.eq .c2{color:#EF9F27;font-weight:500}
+.eq .c3{color:#7F77DD;font-weight:500}.eq .c4{color:#E24B4A;font-weight:500}
+.eq .c5{color:#185FA5;font-weight:500}.eq .cm{color:var(--color-text-tertiary)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.mini{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem}
+.mt{font-size:12px;font-weight:500;margin-bottom:.2rem}
+.mb{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.step{display:flex;gap:12px;margin-bottom:.85rem;align-items:flex-start}
+.snum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:2px}
+.row-item{display:flex;align-items:flex-start;padding:.4rem 0;border-bottom:.5px solid var(--color-border-tertiary);gap:10px}
+.row-item:last-child{border-bottom:none}
+.ri-l{font-size:12px;font-weight:500;color:var(--color-text-primary);flex:0 0 150px}
+.ri-r{font-size:12px;color:var(--color-text-secondary);flex:1;line-height:1.5}
+.warn-box{background:#FEF7F7;border:.5px solid #F09595;border-radius:var(--border-radius-md);padding:.65rem .85rem;margin:.4rem 0;font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.warn-box strong{color:#791F1F}
+.good-box{background:#F0FAF6;border:.5px solid #9FE1CB;border-radius:var(--border-radius-md);padding:.65rem .85rem;margin:.4rem 0;font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.good-box strong{color:#085041}
+hr.div{border:none;border-top:.5px solid var(--color-border-tertiary);margin:.85rem 0}
+@media(max-width:500px){.two,.three{grid-template-columns:1fr}}
+</style>
+
+<div style="padding:1.25rem 0">
+<div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-tertiary);margin-bottom:.35rem">Technical deep-dive</div>
+<h2 style="font-size:18px;font-weight:500;margin-bottom:.4rem">Every question answered precisely</h2>
+<div class="tab-bar">
+  <button class="tab on" onclick="sw('surprise',this)">Surprise + Reward</button>
+  <button class="tab" onclick="sw('sar',this)">State/Action/Reward</button>
+  <button class="tab" onclick="sw('isolation',this)">Isolation testing</button>
+  <button class="tab" onclick="sw('difficulty',this)">Problem difficulty</button>
+  <button class="tab" onclick="sw('failures',this)">Failure modes</button>
+  <button class="tab" onclick="sw('future',this)">Multi-user + RL policy</button>
+</div>
+
+<!-- SURPRISE + REWARD -->
+<div class="panel on" id="surprise">
+  <div class="ct" style="font-size:15px">Why both surprise AND reward?</div>
+  <p class="cs" style="margin-bottom:.75rem">They answer completely different questions and operate at different times. Removing either one breaks the system in a distinct way.</p>
+
+  <div class="two" style="margin-bottom:.75rem">
+    <div class="card" style="margin-bottom:0;border-left:3px solid #7F77DD">
+      <div class="ct">Surprise metric</div>
+      <p class="cs" style="margin-bottom:.3rem">Runs <strong>during the forward pass</strong>, token by token. Answers: <em>"is this token worth writing into memory at all?"</em></p>
+      <p class="cs">Gradient norm of associative loss. High = model doesn't already know this association. Low = model already has it. Gates the write strength.</p>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:3px solid #EF9F27">
+      <div class="ct">Reward-conditioned update</div>
+      <p class="cs" style="margin-bottom:.3rem">Runs <strong>after task completion</strong>, once per task. Answers: <em>"did the action that came from this memory state actually work?"</em></p>
+      <p class="cs">TD error between predicted reward and observed reward. Updates which (situation→action) associations are reinforced or suppressed.</p>
+    </div>
+  </div>
+
+  <div class="lbl">What breaks if you remove one</div>
+  <div class="warn-box" style="margin-bottom:.5rem">
+    <strong>Without surprise (only reward):</strong> Memory writes every single token with equal weight. Within one 500-token problem, all 500 tokens update the weights, most of them carrying zero signal about what mattered. Memory saturates with noise. The weights stop being useful — they're averaging over irrelevant tokens like "def", "return", "the". Result: reward signal is correct but buried in noise.
+  </div>
+  <div class="warn-box">
+    <strong>Without reward (only surprise):</strong> Memory writes what's surprising — novel syntax, unusual patterns, unexpected phrases. But "surprising" is not the same as "what led to success." The model might strongly memorise an unusual bug it introduced and then keep repeating it, because it's consistently surprising but never gets corrected. Result: memory learns interesting things, not useful things.
+  </div>
+
+  <div class="lbl">How they interact — the two-phase write</div>
+  <div class="eq">
+    <span class="cm">// PHASE 1 — during forward pass (surprise-gated associative write):</span><br>
+    <span class="cm">// For each token t in the problem+solution sequence:</span><br>
+    <span class="c3">surprise_t</span> = ‖∇_θ ‖M_θ(k_t) − v_t‖²‖<br>
+    <span class="cm">// Only write if surprise exceeds threshold</span><br>
+    <span class="kw">if</span> <span class="c3">surprise_t</span> > τ:<br>
+    &nbsp;&nbsp;θ ← θ − η_assoc · <span class="c3">surprise_t</span> · ∇_θ loss<br><br>
+    <span class="cm">// PHASE 2 — after reward arrives (reward-conditioned update):</span><br>
+    <span class="c2">td_error</span> = r_actual − M_θ(encode(situation, action))<br>
+    θ ← θ + η_reward · <span class="c2">td_error</span> · ∇_θ M_θ(encode(situation, action))<br><br>
+    <span class="cm">// Phase 1 decides WHAT gets stored (novelty filter)</span><br>
+    <span class="cm">// Phase 2 decides HOW STRONGLY to weight it (outcome filter)</span>
+  </div>
+
+  <div class="good-box"><strong>The intuition:</strong> Surprise is the filter at the door — only let in things that are new. Reward is the reinforcement signal inside — of the new things that came in, strengthen what worked and weaken what failed. You need both because new-but-wrong and old-but-right are both useless on their own.</div>
+</div>
+
+<!-- STATE ACTION REWARD -->
+<div class="panel" id="sar">
+  <div class="ct" style="font-size:15px">What exactly are state, action, and reward here?</div>
+  <p class="cs" style="margin-bottom:.75rem">This is the hardest question to answer correctly. You're right that there's no ready-made tuple. The model doesn't know "state" or "action" — it only produces tokens. Here's how we construct them.</p>
+
+  <div class="lbl">The fundamental problem</div>
+  <div class="note nr">In classical RL, state and action are explicit: the game board is the state, moving left is the action. In an LLM generating code, neither is explicit. The "action" is an entire sequence of tokens (the generated solution). The "state" is whatever the model was "thinking" when it decided to generate that sequence. We need to construct both from the model's own hidden representations.</div>
+
+  <div class="lbl">State — the situation encoding</div>
+  <div class="card">
+    <div class="ct">State = average hidden representation while reading the problem</div>
+    <p class="cs" style="margin-bottom:.5rem">When the model processes the problem description (before generating anything), its hidden states at the memory layer form a representation of "the situation." We take the mean of those hidden states as the state vector.</p>
+    <div class="eq">
+      <span class="cm">// Process problem description, extract hidden states at memory layer:</span><br>
+      problem_tokens = tokenize("Write a function that reverses a string...")<br>
+      hidden_states = model.get_hidden_states(problem_tokens)  <span class="cm"># shape: [seq_len, dim]</span><br><br>
+      <span class="c1">state_vec</span> = hidden_states.mean(dim=0)  <span class="cm"># shape: [dim]</span><br>
+      <span class="cm">// This is the model's compressed "understanding" of the problem situation.</span><br>
+      <span class="cm">// Similar problems will have similar state_vec values — cosine similarity > 0.8</span><br>
+      <span class="cm">// Very different problems will have distant state_vecs</span>
+    </div>
+    <div class="note na">The key property you need: two problems that require similar solutions should have similar state vectors. This is what allows the memory to generalise — "I failed at a string reversal problem before, and this looks like another string reversal problem." That generalisation happens automatically because the embedding space clusters similar problems together.</div>
+  </div>
+
+  <div class="lbl">Action — the solution encoding</div>
+  <div class="card">
+    <div class="ct">Action = average hidden representation while generating the solution</div>
+    <p class="cs" style="margin-bottom:.5rem">After the model generates its code output, we pass the generated tokens back through the model and extract the hidden states. This gives us a vector representation of "what the model did."</p>
+    <div class="eq">
+      <span class="cm">// After generation, encode the solution:</span><br>
+      solution_tokens = tokenize(generated_code)<br>
+      solution_hidden = model.get_hidden_states(solution_tokens)  <span class="cm"># [seq_len, dim]</span><br><br>
+      <span class="c2">action_vec</span> = solution_hidden.mean(dim=0)  <span class="cm"># shape: [dim]</span><br><br>
+      <span class="cm">// Combine state + action into one encoding for the memory:</span><br>
+      <span class="c5">situation_action</span> = torch.cat([<span class="c1">state_vec</span>, <span class="c2">action_vec</span>])  <span class="cm"># shape: [2*dim]</span><br>
+      <span class="cm">// Or use a learned projection:</span><br>
+      <span class="c5">situation_action</span> = W_sa · torch.cat([<span class="c1">state_vec</span>, <span class="c2">action_vec</span>])  <span class="cm"># shape: [dim]</span>
+    </div>
+  </div>
+
+  <div class="lbl">Reward — the outcome signal</div>
+  <div class="card">
+    <div class="ct">Reward = scalar from the execution sandbox</div>
+    <p class="cs" style="margin-bottom:.5rem">This is the clean part. Run the code. Count passed tests. Normalize to [0, 1].</p>
+    <div class="eq">
+      <span class="c4">reward</span> = tests_passed / total_tests<br><br>
+      <span class="cm">// Examples:</span><br>
+      <span class="cm">// All 3 tests pass   → reward = 1.0  (perfect)</span><br>
+      <span class="cm">// 2 of 3 tests pass  → reward = 0.67 (partial credit — important!)</span><br>
+      <span class="cm">// Syntax error       → reward = 0.0  (complete failure)</span><br>
+      <span class="cm">// Timeout            → reward = −0.1 (worse than wrong — penalise loops)</span>
+    </div>
+  </div>
+
+  <div class="lbl">The complete TD update — with real vectors</div>
+  <div class="eq">
+    <span class="cm">// Memory predicts reward for this (state, action) pair:</span><br>
+    <span class="c3">predicted_r</span> = M_θ(<span class="c5">situation_action</span>).mean()  <span class="cm"># scalar</span><br><br>
+    <span class="cm">// Observe actual reward from sandbox:</span><br>
+    <span class="c4">actual_r</span> = tests_passed / total_tests<br><br>
+    <span class="cm">// TD error — how wrong was the memory's prediction?</span><br>
+    <span class="c2">td_error</span> = <span class="c4">actual_r</span> − <span class="c3">predicted_r</span><br><br>
+    <span class="cm">// Update memory weights to reduce this error next time:</span><br>
+    loss = (<span class="c2">td_error</span>)² = (<span class="c4">actual_r</span> − M_θ(<span class="c5">situation_action</span>))²<br>
+    θ ← θ − η · ∇_θ loss<br><br>
+    <span class="cm">// Next time same situation_action appears → M_θ predicts closer to actual_r</span><br>
+    <span class="cm">// For unseen-but-similar situations → M_θ generalises via weight geometry</span>
+  </div>
+
+  <div class="good-box"><strong>The crucial insight:</strong> The memory is learning the function: f(situation, action) → expected_reward. Once trained, before generating, the model can query: "for this situation, which action encoding gives me the highest expected reward?" That's the RL loop. During generation (beam search or sampling), action candidates with higher predicted reward get higher weight. The memory has become a value function — embedded in the weights of M_θ.</div>
+</div>
+
+<!-- ISOLATION TESTING -->
+<div class="panel" id="isolation">
+  <div class="ct" style="font-size:15px">Building and testing the memory module in isolation</div>
+  <p class="cs" style="margin-bottom:.75rem">"In isolation" means: no LLM. No transformer. No tokenizer. Just the NeuralMemoryModule class, synthetic data, and assertions. You're verifying the mechanism works before attaching it to anything expensive.</p>
+
+  <div class="lbl">What you're actually testing — 4 properties</div>
+  <div class="three" style="margin-bottom:.75rem">
+    <div class="mini">
+      <div class="mt" style="color:#085041">1. Associative storage</div>
+      <div class="mb">Write (k₁→v₁), then query k₁. Should recover v₁ with low error. Like a hashtable but in weight space.</div>
+    </div>
+    <div class="mini">
+      <div class="mt" style="color:#534AB7">2. Surprise behaviour</div>
+      <div class="mb">Surprise should be high on first write of a new key. Near-zero on repeated writes. This verifies the gradient norm signal works.</div>
+    </div>
+    <div class="mini">
+      <div class="mt" style="color:#BA7517">3. Reward learning</div>
+      <div class="mb">After reward updates for (s,a)→r pairs, M_θ(s,a) should approach r. Verifies TD update propagates into weights.</div>
+    </div>
+  </div>
+  <div class="three" style="margin-bottom:.75rem">
+    <div class="mini">
+      <div class="mt" style="color:#791F1F">4. Generalisation</div>
+      <div class="mb">After learning (s₁→r=1.0) and (s₂→r=0.0), a new s₃ similar to s₁ should predict closer to 1.0. This is the key property.</div>
+    </div>
+    <div class="mini">
+      <div class="mt" style="color:#0C447C">5. Decay</div>
+      <div class="mb">Old memories should fade if not reinforced. After 100 unrelated writes, the original k₁ retrieval should show higher error.</div>
+    </div>
+    <div class="mini">
+      <div class="mt" style="color:#3C3489">6. Interference limit</div>
+      <div class="mb">Writing 500 different (k,v) pairs shouldn't cause catastrophic forgetting of the first 10. Measures memory capacity.</div>
+    </div>
+  </div>
+
+  <div class="lbl">Concrete isolation test suite</div>
+  <div class="eq">
+    <span class="cm">import torch</span><br>
+    <span class="cm">import torch.nn as nn</span><br><br>
+    <span class="cm">def test_associative_storage(mem, dim=64):</span><br>
+    &nbsp;&nbsp;<span class="cm">"""Test 1: memory can store and retrieve a key-value pair."""</span><br>
+    &nbsp;&nbsp;<span class="c1">k</span> = torch.randn(dim)  <span class="cm"># a fixed key</span><br>
+    &nbsp;&nbsp;<span class="c2">v</span> = torch.randn(dim)  <span class="cm"># the value to associate</span><br><br>
+    &nbsp;&nbsp;<span class="cm"># Force memory to overwrite W_K/W_V to point at this pair</span><br>
+    &nbsp;&nbsp;<span class="cm"># by writing it 50 times (simulate repetition)</span><br>
+    &nbsp;&nbsp;<span class="kw">for</span> _ <span class="kw">in</span> range(50):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;mem.write_kv(<span class="c1">k</span>, <span class="c2">v</span>)  <span class="cm"># direct k,v write, no projection</span><br><br>
+    &nbsp;&nbsp;retrieved = mem.read(<span class="c1">k</span>)<br>
+    &nbsp;&nbsp;error = ((retrieved - <span class="c2">v</span>)**2).mean().item()<br>
+    &nbsp;&nbsp;<span class="kw">assert</span> error < 0.1, f"Storage failed: error={error:.4f}"<br>
+    &nbsp;&nbsp;<span class="c3">print</span>(f"✓ Associative storage: error={error:.4f}")<br><br>
+    <span class="cm">def test_surprise_behaviour(mem, dim=64):</span><br>
+    &nbsp;&nbsp;<span class="cm">"""Test 2: surprise high on first write, low on repeated writes."""</span><br>
+    &nbsp;&nbsp;<span class="c1">k</span> = torch.randn(dim)<br>
+    &nbsp;&nbsp;<span class="c2">v</span> = torch.randn(dim)<br><br>
+    &nbsp;&nbsp;surprises = []<br>
+    &nbsp;&nbsp;<span class="kw">for</span> i <span class="kw">in</span> range(20):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;s = mem.write_kv(<span class="c1">k</span>, <span class="c2">v</span>)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;surprises.append(s)<br><br>
+    &nbsp;&nbsp;<span class="kw">assert</span> surprises[0] > surprises[-1] * 3, "Surprise should decay with repetition"<br>
+    &nbsp;&nbsp;<span class="c3">print</span>(f"✓ Surprise decay: {surprises[0]:.3f} → {surprises[-1]:.3f}")<br><br>
+    <span class="cm">def test_reward_learning(mem, dim=64):</span><br>
+    &nbsp;&nbsp;<span class="cm">"""Test 3: memory learns to predict reward from (state, action) pairs."""</span><br>
+    &nbsp;&nbsp;<span class="cm"># Create 3 fixed (state, action) → reward pairs</span><br>
+    &nbsp;&nbsp;pairs = [<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(torch.randn(dim), 1.0),   <span class="cm"># this approach works</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(torch.randn(dim), 0.0),   <span class="cm"># this approach fails</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(torch.randn(dim), 0.5),   <span class="cm"># this approach partially works</span><br>
+    &nbsp;&nbsp;]<br><br>
+    &nbsp;&nbsp;<span class="cm"># Train memory on these pairs for 100 steps</span><br>
+    &nbsp;&nbsp;<span class="kw">for</span> _ <span class="kw">in</span> range(100):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for</span> enc, reward <span class="kw">in</span> pairs:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;predicted = mem.layers(enc).mean().item()<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mem.reward_update(enc, predicted, reward)<br><br>
+    &nbsp;&nbsp;<span class="cm"># Verify predictions are close to actual rewards</span><br>
+    &nbsp;&nbsp;<span class="kw">for</span> enc, expected_r <span class="kw">in</span> pairs:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;predicted = mem.layers(enc).mean().item()<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">assert</span> abs(predicted - expected_r) < 0.15, \<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f"Reward prediction failed: got {predicted:.3f}, expected {expected_r}"<br>
+    &nbsp;&nbsp;<span class="c3">print</span>("✓ Reward learning: predictions within 0.15 of actual")<br><br>
+    <span class="cm">def test_generalisation(mem, dim=64):</span><br>
+    &nbsp;&nbsp;<span class="cm">"""Test 4: similar situations → similar predicted reward."""</span><br>
+    &nbsp;&nbsp;base = torch.randn(dim)<br>
+    &nbsp;&nbsp;similar = base + 0.1 * torch.randn(dim)     <span class="cm"># small perturbation</span><br>
+    &nbsp;&nbsp;different = torch.randn(dim)                  <span class="cm"># unrelated vector</span><br><br>
+    &nbsp;&nbsp;<span class="cm"># Teach: base → reward 1.0</span><br>
+    &nbsp;&nbsp;<span class="kw">for</span> _ <span class="kw">in</span> range(50):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;mem.reward_update(base, 0.0, 1.0)<br><br>
+    &nbsp;&nbsp;r_base    = mem.layers(base).mean().item()<br>
+    &nbsp;&nbsp;r_similar = mem.layers(similar).mean().item()<br>
+    &nbsp;&nbsp;r_diff    = mem.layers(different).mean().item()<br><br>
+    &nbsp;&nbsp;<span class="cm"># Similar should predict closer to 1.0 than different</span><br>
+    &nbsp;&nbsp;<span class="kw">assert</span> abs(r_similar - 1.0) < abs(r_diff - 1.0), "Generalisation failed"<br>
+    &nbsp;&nbsp;<span class="c3">print</span>(f"✓ Generalisation: base={r_base:.2f}, similar={r_similar:.2f}, diff={r_diff:.2f}")<br><br>
+    <span class="cm"># Run all tests</span><br>
+    mem = NeuralMemoryModule(dim=64)<br>
+    test_associative_storage(mem)<br>
+    test_surprise_behaviour(mem)<br>
+    test_reward_learning(mem)<br>
+    test_generalisation(mem)
+  </div>
+
+  <div class="good-box"><strong>All 4 tests passing = the memory module works as designed. Then and only then, attach it to the LLM.</strong> This saves you from debugging a broken memory module inside a 3B model where the error signal is invisible.</div>
+</div>
+
+<!-- PROBLEM DIFFICULTY -->
+<div class="panel" id="difficulty">
+  <div class="ct" style="font-size:15px">Problem difficulty calibration — the real problem</div>
+  <p class="cs" style="margin-bottom:.75rem">You're right to be skeptical. This is a known failure mode called the <strong>floor-ceiling problem</strong> in evaluation design, and it completely invalidates results if ignored.</p>
+
+  <div class="lbl">Why easy and hard problems are both useless</div>
+  <div class="two" style="margin-bottom:.75rem">
+    <div class="warn-box">
+      <strong>Too easy (both models pass):</strong><br>
+      Session 1: Memory model 90%, Baseline 90%<br>
+      Session 5: Memory model 91%, Baseline 90%<br><br>
+      You can't see improvement. The problems were already solved. You can't measure learning where there's nothing to learn.
+    </div>
+    <div class="warn-box">
+      <strong>Too hard (neither model passes):</strong><br>
+      Session 1: Memory model 5%, Baseline 5%<br>
+      Session 5: Memory model 6%, Baseline 5%<br><br>
+      Reward is always ~0. The TD error is near-zero. The memory layer has no signal to learn from. Nothing improves.
+    </div>
+  </div>
+
+  <div class="good-box"><strong>What you need: problems the model solves 30–60% of the time in Session 1.</strong> These are problems where it sometimes gets the right approach and sometimes doesn't — meaning the reward signal is sometimes 1.0, sometimes 0.0, giving the memory real gradient to learn from. By session 5, you want to see 50–75% pass rate on these. That delta is your result.</div>
+
+  <div class="lbl">How to calibrate — practical protocol</div>
+  <div class="step">
+    <div class="snum" style="background:#FAEEDA;color:#633806">1</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:500;margin-bottom:.2rem">Empirical difficulty scan first</div>
+      <p class="cs">Before running any memory experiments, run the base model (no memory) on 60 HumanEval problems across 3 attempts each. Record the pass rate per problem. This gives you the model's inherent difficulty distribution for your chosen model.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="snum" style="background:#E1F5EE;color:#085041">2</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:500;margin-bottom:.2rem">Select the 30–60% band</div>
+      <p class="cs">Keep only problems where the base model passed 1 or 2 out of 3 attempts. Discard problems it always passed (too easy) and problems it never passed (too hard). This is your calibrated eval set. For Gemma 2B, this will be roughly HumanEval problems 20–50 by difficulty.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="snum" style="background:#EEEDFE;color:#3C3489">3</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:500;margin-bottom:.2rem">Use partial credit rewards</div>
+      <p class="cs">Binary pass/fail (0 or 1) is too coarse. Add partial credit: if a function handles 2 of 3 edge cases, reward = 0.67. This gives the memory richer gradient signal and reduces the variance of the reward estimate. The sandbox already supports this with tests_passed / total_tests.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="snum" style="background:#FAECE7;color:#993C1D">4</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:500;margin-bottom:.2rem">Use problem clusters, not random selection</div>
+      <p class="cs">Pick 5 clusters of 4 structurally similar problems: string manipulation × 4, array operations × 4, recursion × 4, dictionary operations × 4, math/modular arithmetic × 4. This lets you measure whether the memory generalises within a cluster — learns "string reversal approach" not just "this specific problem."</p>
+    </div>
+  </div>
+
+  <div class="lbl">The metric that actually matters</div>
+  <div class="eq">
+    <span class="cm">// Not just overall pass rate — measure improvement on FAILED problems</span><br><br>
+    F = {problems that failed in Session 1}<br><br>
+    <span class="c1">improvement_rate</span> = |{p ∈ F : passes in Session N}| / |F|<br><br>
+    <span class="cm">// This is the signal. Base model: improvement_rate ≈ 0 (no memory = no change)</span><br>
+    <span class="cm">// Memory model: improvement_rate should increase with each session</span><br>
+    <span class="cm">// Target: improvement_rate > 0.3 by session 5</span>
+  </div>
+</div>
+
+<!-- FAILURE MODES -->
+<div class="panel" id="failures">
+  <div class="ct" style="font-size:15px">Every failure mode — and how to detect + prevent each one</div>
+  <p class="cs" style="margin-bottom:.75rem">In rough order of likelihood. Most of these will happen. Knowing them in advance means you debug in minutes, not days.</p>
+
+  <div class="card">
+    <div class="ct" style="color:#791F1F">① Gate collapse — model ignores memory entirely</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> The gate g_t = sigmoid(W_g · x) learns to output ≈ 0 for everything, using only the attention output. Memory layer is dead — it has no effect on output.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Log g_t values during inference. If median g_t < 0.05 after 1000 steps, gate has collapsed.</p>
+    <p class="cs"><strong>How to fix:</strong> Add a gate regularisation loss: L_gate = (mean(g_t) − 0.3)² — penalise the gate for being too close to 0 or 1. Forces it to actually blend memory and attention.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#791F1F">② Memory saturation — all weights collapse to near-zero</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> The forget gate α_t ≈ 1 everywhere, decay term (1−α_t) ≈ 0, all weights drive to zero. Memory MLP outputs near-zero vectors for any query. Associative storage fails.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Log ‖θ‖ (weight norm) each step. If it monotonically decreases toward 0, saturation is happening.</p>
+    <p class="cs"><strong>How to fix:</strong> Clip α_t to [0.0, 0.9] — never allow full decay. Add weight norm monitoring as a training assertion.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#791F1F">③ Gradient explosion in the write loop</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> Computing ∇_θ for every token causes gradients to accumulate over a 500-token sequence. By token 500, gradient norms are in the thousands. Memory weights blow up, outputs become NaN.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> NaN in outputs within 10 steps of starting the memory write. Or gradient norms > 100.</p>
+    <p class="cs"><strong>How to fix:</strong> Clip gradients before applying: grad.clamp_(−1.0, 1.0). Use a lower learning rate η = 0.001 not 0.01 for the memory write. Also: only write on tokens with surprise > threshold, which already caps the number of writes per sequence.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#633806">④ State encoding collapse — all problems look the same</div>
+    <p class="cs" style="margin-bottom:.4f"><strong>What happens:</strong> The mean of hidden states over a 200-token problem description gives a nearly identical vector for all problems because the embeddings are dominated by shared tokens ("Write a function that...", "return", "def"). State generalises too aggressively — memory thinks all problems are the same situation.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Compute cosine similarity between state_vecs of 20 different problems. If average similarity > 0.95, they're collapsing.</p>
+    <p class="cs"><strong>How to fix:</strong> Use the last hidden state rather than mean. Or use only the hidden states of the "content words" (skip stopwords at tokenisation). Or use a learned projection W_state that's trained to maximally separate problem types.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#633806">⑤ Reward sparsity — almost always 0, rarely 1</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> If your calibration is off and the model almost always fails, reward is almost always 0. TD error is near-zero. Memory weights barely update. No learning happens and you think the architecture is broken, but it's the problem selection.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Mean reward per session < 0.1.</p>
+    <p class="cs"><strong>How to fix:</strong> This is why problem calibration (previous tab) is done first. If you see this in practice, switch to easier problems immediately. Don't debug the architecture when the problem is the data.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#533AB7">⑥ Session loading interference — memory hurts more than it helps</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> Memory from session 1 actively interferes with session 2 because the weight updates from wrong answers in session 1 are pointing in the wrong direction for different problems in session 2. Pass rate goes DOWN with memory.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Session 2 pass rate < session 1 on the memory model.</p>
+    <p class="cs"><strong>How to fix:</strong> Only save memory updates from successful episodes (reward > 0.7). Failed attempts write noise. Alternatively, scale the TD update by the reward magnitude — zero reward → zero write. High reward → strong write.</p>
+  </div>
+
+  <div class="card">
+    <div class="ct" style="color:#533AB7">⑦ Base model quality degradation from memory grafting</div>
+    <p class="cs" style="margin-bottom:.4rem"><strong>What happens:</strong> Inserting the MemoryAugmentedDecoderLayer changes the residual stream of the transformer. Even with g_t gated toward attention, the wrapper itself introduces floating point differences that compound across 32 layers. The model outputs gibberish even before any memory writes.</p>
+    <p class="cs" style="margin-bottom:.4rem"><strong>How to detect:</strong> Immediately after grafting (before any writes), run perplexity on a validation set and compare to pre-graft perplexity. Should be within 1%.</p>
+    <p class="cs"><strong>How to fix:</strong> Initialise gate bias to a large negative value (−5.0), which initialises g_t ≈ sigmoid(−5) ≈ 0.007 — memory layer is nearly invisible at init. Let it learn to activate gradually.</p>
+  </div>
+</div>
+
+<!-- MULTI-USER + RL POLICY -->
+<div class="panel" id="future">
+  <div class="ct" style="font-size:15px">Multi-user memory and RL memory policy — explained properly</div>
+
+  <div class="lbl">Multi-user memory — the problem</div>
+  <div class="card">
+    <div class="ct">What it means and why it's hard</div>
+    <p class="cs" style="margin-bottom:.5rem">Right now the prototype assumes one user — you. One memory state θ that persists across your sessions. This is manageable. But as soon as you want multiple users, you have choices about where the memory lives and how it updates — and each choice has tradeoffs.</p>
+    <div class="row-item"><div class="ri-l">Option A: Per-user θ files</div><div class="ri-r">Each user gets their own memory_alice.pt, memory_bob.pt. Simple. Clean. Scales horizontally. The problem: the base model is shared but memory is private. If Alice and Bob both learn that "recursion works for tree problems", they each learn it separately. No knowledge sharing.</div></div>
+    <div class="row-item"><div class="ri-l">Option B: Shared θ + user embedding</div><div class="ri-r">One shared memory layer, but each query/write is conditioned on a user_id embedding. memory.read([q_t ‖ user_emb]). Allows knowledge sharing while maintaining personal context. Much harder to implement — user embeddings need to be learned.</div></div>
+    <div class="row-item"><div class="ri-l">Option C: Hierarchical θ</div><div class="ri-r">Two memory layers: a shared "world knowledge" layer (updated by all users) and a personal "user model" layer (updated by each user separately). Research frontier — nobody has built this cleanly.</div></div>
+    <div class="note na" style="margin-top:.5rem"><strong>For the prototype: Option A. One user. Full stop.</strong> Multi-user memory is a future research problem, not a prototype concern. The README puts it in future work because it's a real system design challenge — not because it's needed to prove the core idea.</div>
+  </div>
+
+  <div class="lbl">RL training on memory policy — what it actually means</div>
+  <div class="card">
+    <div class="ct">The difference between a fixed rule and a learned policy</div>
+    <p class="cs" style="margin-bottom:.5rem">In the prototype, the memory update rule is <strong>hand-coded</strong>:</p>
+    <div class="eq">
+      <span class="cm">// Prototype rule (hand-coded):</span><br>
+      <span class="kw">if</span> surprise > threshold AND reward > 0.5:<br>
+      &nbsp;&nbsp;write strongly<br>
+      <span class="kw">elif</span> reward < 0.1:<br>
+      &nbsp;&nbsp;suppress / decay<br>
+      <span class="kw">else</span>:<br>
+      &nbsp;&nbsp;write weakly
+    </div>
+    <p class="cs" style="margin-bottom:.5rem">This works. But "threshold", "0.5", "0.1" are all guesses. Different users, different domains, different task types all have different optimal thresholds. The hand-coded rule is a one-size-fits-all approximation.</p>
+    <p class="cs" style="margin-bottom:.5rem"><strong>RL training on memory policy</strong> means: instead of this hand-coded rule, train a small neural network (the policy π) to decide what to do. It takes as input (surprise_t, reward_t, age_of_memory, task_type, user_context) and outputs an action from {WRITE_STRONG, WRITE_WEAK, UPDATE, SUPPRESS, NOOP}.</p>
+    <div class="eq">
+      <span class="cm">// Learned policy (future work):</span><br>
+      a_t = π_RL(surprise_t, reward_t, memory_age, task_embedding, ...)<br>
+      a_t ∈ {WRITE_STRONG, WRITE_WEAK, UPDATE, SUPPRESS, NOOP}<br><br>
+      <span class="cm">// π_RL is trained with GRPO on a dataset of (memory_state, action, outcome)</span><br>
+      <span class="cm">// The reward for π is: did this memory operation improve future task performance?</span><br>
+      <span class="cm">// Memory-R1 (2025) proved this works for external memory.</span><br>
+      <span class="cm">// Applying it to internal weight-space memory = Paper 3.</span>
+    </div>
+    <div class="note np"><strong>For the prototype, this is not needed.</strong> The hand-coded rule is good enough to prove the core loop works. RL memory policy is what you do after the prototype works — when you want to optimise the management of what's already a functional memory system.</div>
+  </div>
+</div>
+
+</div>
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');btn.classList.add('on');
+}
+</script>

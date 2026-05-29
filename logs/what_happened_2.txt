@@ -1,0 +1,901 @@
+6.6s	0	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.6s	1	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.6s	2	0.00s - to python to disable frozen modules.
+6.6s	3	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.1s	4	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.1s	5	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.1s	6	0.00s - to python to disable frozen modules.
+7.1s	7	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+11.0s	8	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+11.2s	9	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+18.3s	10	Env ready. CUDA: True
+18.3s	11	Device: Tesla T4
+18.3s	12	Source files copied: ['memory_module.py', 'sandbox.py', 'eval.py', 'model_surgery.py', 'session_manager.py']
+18.5s	13	Running isolation tests on NeuralMemoryModule...
+18.5s	14	(All must pass before attaching to any LLM)
+18.5s	15	
+19.6s	16	  PASS associative_storage: retrieval_error=0.0843
+20.2s	17	  PASS surprise_decay: 2.2200 -> 1.2913
+21.6s	18	  PASS reward_learning: all 3 pairs within 0.15 tolerance
+22.0s	19	  PASS generalisation: base=0.97, similar=0.95, diff=0.10
+22.6s	20	  PASS weight_norm_stability: 12.326 -> 8.355 (no NaN/Inf, retained >68% of initial norm)
+22.8s	21	         post-stress retrieval error: 0.1317 (functional: YES)
+22.8s	22	
+22.8s	23	All isolation tests passed. Safe to proceed to LLM integration.
+45.6s	24	`torch_dtype` is deprecated! Use `dtype` instead!
+45.6s	25	
+45.6s	26	`torch_dtype` is deprecated! Use `dtype` instead!
+72.3s	27	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+72.3s	28	
+72.3s	29	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+72.5s	30	Model loaded. Device: cuda:0
+78.4s	31	Write a Python function to reverse a string:
+78.4s	32	
+78.4s	33	```python
+78.4s	34	def reverse_string(s):
+78.4s	35	  """
+78.4s	36	  Reverses a string.
+78.4s	37	
+78.4s	38	  Args:
+78.4s	39	    s: The string to reverse.
+78.4s	40	
+78.4s	41	  Returns:
+78.4s	42	    The reversed string.
+78.4s	43	  """
+78.4s	44	  return s[::-1]
+78.4s	45	```
+78.4s	46	
+78.4s	47	**Explanation:**
+78.4s	48	
+78.4s	49	* **`def reverse_string(s):`**: This line defines a function named `
+79.3s	50	Perplexity before injection: 1.8748
+80.0s	51	  Memory injected at layer 4 (device=cuda:0, dtype=torch.float16)
+80.5s	52	  Memory injected at layer 8 (device=cuda:0, dtype=torch.float16)
+80.9s	53	  Memory injected at layer 16 (device=cuda:1, dtype=torch.float16)
+81.4s	54	  Memory injected at layer 24 (device=cuda:1, dtype=torch.float16)
+81.4s	55	  Trainable: 191,158,280 / 2,805,500,168 (6.814%)
+82.1s	56	Perplexity after injection:  1.8764
+82.1s	57	Delta: 0.09%  (must be < 1% to proceed)
+82.1s	58	
+82.1s	59	Gate OK. Safe to proceed.
+82.3s	60	  PASS correct code:     reward=1.0
+82.3s	61	  PASS wrong code:       reward=0.0
+84.5s	62	  PASS timeout:          reward=-0.1
+84.5s	63	  PASS HumanEval parser: reward=1.0
+84.5s	64	  PASS partial credit:   reward=0.67
+84.5s	65	
+84.5s	66	All sandbox tests passed.
+84.7s	67	Local file not found — downloading from HuggingFace datasets...
+88.2s	68	Saved 164 problems → /kaggle/working/problems/humaneval_raw.json
+88.2s	69	Loaded 164 raw HumanEval problems.
+88.2s	70	Calibrating 100 problems (target pass rate: 0.3–0.7)...
+88.2s	71	
+154.0s	72	  DROP HumanEval/0: too easy  (pass_rate=1.00)
+219.2s	73	  DROP HumanEval/1: too easy  (pass_rate=1.00)
+267.7s	74	  KEEP HumanEval/2: pass_rate=0.33
+330.4s	75	  KEEP HumanEval/3: pass_rate=0.67
+395.6s	76	  DROP HumanEval/4: too easy  (pass_rate=1.00)
+460.3s	77	  KEEP HumanEval/5: pass_rate=0.33
+525.2s	78	  DROP HumanEval/6: too hard  (pass_rate=0.00)
+590.4s	79	  DROP HumanEval/7: too hard  (pass_rate=0.00)
+656.1s	80	  KEEP HumanEval/8: pass_rate=0.67
+721.3s	81	  DROP HumanEval/9: too easy  (pass_rate=1.00)
+786.3s	82	  DROP HumanEval/10: too hard  (pass_rate=0.00)
+851.2s	83	  DROP HumanEval/11: too easy  (pass_rate=1.00)
+916.1s	84	  DROP HumanEval/12: too easy  (pass_rate=1.00)
+980.7s	85	  KEEP HumanEval/13: pass_rate=0.67
+1045.1s	86	  KEEP HumanEval/14: pass_rate=0.33
+1101.7s	87	  DROP HumanEval/15: too easy  (pass_rate=1.00)
+1166.4s	88	  DROP HumanEval/16: too easy  (pass_rate=1.00)
+1231.0s	89	  DROP HumanEval/17: too hard  (pass_rate=0.00)
+1295.9s	90	  KEEP HumanEval/18: pass_rate=0.67
+1357.0s	91	  DROP HumanEval/19: too hard  (pass_rate=0.00)
+1422.1s	92	  DROP HumanEval/20: too hard  (pass_rate=0.00)
+1486.6s	93	  DROP HumanEval/21: too hard  (pass_rate=0.00)
+1550.8s	94	  DROP HumanEval/22: too easy  (pass_rate=1.00)
+1608.4s	95	  DROP HumanEval/23: too easy  (pass_rate=1.00)
+1673.1s	96	  KEEP HumanEval/24: pass_rate=0.67
+1737.6s	97	  DROP HumanEval/25: too easy  (pass_rate=1.00)
+1802.0s	98	  DROP HumanEval/26: too hard  (pass_rate=0.00)
+1866.3s	99	  DROP HumanEval/27: too easy  (pass_rate=1.00)
+1916.4s	100	  DROP HumanEval/28: too hard  (pass_rate=0.00)
+1980.8s	101	  KEEP HumanEval/29: pass_rate=0.33
+2041.7s	102	  DROP HumanEval/30: too easy  (pass_rate=1.00)
+2106.3s	103	  DROP HumanEval/31: too easy  (pass_rate=1.00)
+2171.1s	104	  DROP HumanEval/32: too hard  (pass_rate=0.00)
+2235.7s	105	  DROP HumanEval/33: too hard  (pass_rate=0.00)
+2297.3s	106	  DROP HumanEval/34: too easy  (pass_rate=1.00)
+2361.7s	107	  DROP HumanEval/35: too easy  (pass_rate=1.00)
+2426.4s	108	  DROP HumanEval/36: too hard  (pass_rate=0.00)
+2491.3s	109	  DROP HumanEval/37: too hard  (pass_rate=0.00)
+2556.0s	110	  DROP HumanEval/38: too hard  (pass_rate=0.00)
+2620.8s	111	  DROP HumanEval/39: too hard  (pass_rate=0.00)
+2685.7s	112	  DROP HumanEval/40: too hard  (pass_rate=0.00)
+2750.5s	113	  DROP HumanEval/41: too hard  (pass_rate=0.00)
+2815.2s	114	  DROP HumanEval/42: too easy  (pass_rate=1.00)
+2880.2s	115	  KEEP HumanEval/43: pass_rate=0.33
+2944.9s	116	  DROP HumanEval/44: too hard  (pass_rate=0.00)
+3008.0s	117	  DROP HumanEval/45: too easy  (pass_rate=1.00)
+3072.1s	118	  DROP HumanEval/46: too hard  (pass_rate=0.00)
+3136.9s	119	  DROP HumanEval/47: too easy  (pass_rate=1.00)
+3201.4s	120	  DROP HumanEval/48: too easy  (pass_rate=1.00)
+3266.0s	121	  KEEP HumanEval/49: pass_rate=0.33
+3330.7s	122	  DROP HumanEval/50: too hard  (pass_rate=0.00)
+3395.5s	123	  DROP HumanEval/51: too easy  (pass_rate=1.00)
+3458.8s	124	  DROP HumanEval/52: too hard  (pass_rate=0.00)
+3523.4s	125	  DROP HumanEval/53: too hard  (pass_rate=0.00)
+3587.0s	126	  KEEP HumanEval/54: pass_rate=0.67
+3651.5s	127	  DROP HumanEval/55: too easy  (pass_rate=1.00)
+3715.8s	128	  DROP HumanEval/56: too easy  (pass_rate=1.00)
+3778.5s	129	  DROP HumanEval/57: too easy  (pass_rate=1.00)
+3842.9s	130	  DROP HumanEval/58: too easy  (pass_rate=1.00)
+3907.2s	131	  DROP HumanEval/59: too hard  (pass_rate=0.00)
+3972.0s	132	  DROP HumanEval/60: too easy  (pass_rate=1.00)
+4036.8s	133	  DROP HumanEval/61: too easy  (pass_rate=1.00)
+4101.8s	134	  DROP HumanEval/62: too hard  (pass_rate=0.00)
+4166.6s	135	  DROP HumanEval/63: too hard  (pass_rate=0.00)
+4231.2s	136	  DROP HumanEval/64: too hard  (pass_rate=0.00)
+4295.7s	137	  DROP HumanEval/65: too hard  (pass_rate=0.00)
+4360.5s	138	  KEEP HumanEval/66: pass_rate=0.67
+4425.6s	139	  DROP HumanEval/67: too hard  (pass_rate=0.00)
+4490.8s	140	  DROP HumanEval/68: too easy  (pass_rate=1.00)
+4555.4s	141	  DROP HumanEval/69: too easy  (pass_rate=1.00)
+4620.0s	142	  DROP HumanEval/70: too hard  (pass_rate=0.00)
+4684.9s	143	  DROP HumanEval/71: too hard  (pass_rate=0.00)
+4749.6s	144	  DROP HumanEval/72: too easy  (pass_rate=1.00)
+4814.1s	145	  KEEP HumanEval/73: pass_rate=0.33
+4878.8s	146	  DROP HumanEval/74: too hard  (pass_rate=0.00)
+4943.4s	147	  DROP HumanEval/75: too hard  (pass_rate=0.00)
+5008.5s	148	  DROP HumanEval/76: too hard  (pass_rate=0.00)
+5070.9s	149	  DROP HumanEval/77: too hard  (pass_rate=0.00)
+5136.2s	150	  DROP HumanEval/78: too easy  (pass_rate=1.00)
+5201.2s	151	  DROP HumanEval/79: too easy  (pass_rate=1.00)
+5266.1s	152	  DROP HumanEval/80: too hard  (pass_rate=0.00)
+6.6s	153	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.6s	154	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.6s	155	0.00s - to python to disable frozen modules.
+6.6s	156	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.1s	157	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.1s	158	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.1s	159	0.00s - to python to disable frozen modules.
+7.1s	160	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+45.6s	161	`torch_dtype` is deprecated! Use `dtype` instead!
+45.6s	162	
+45.6s	163	`torch_dtype` is deprecated! Use `dtype` instead!
+72.3s	164	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+72.3s	165	
+72.3s	166	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+11.0s	167	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+11.2s	168	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+18.3s	169	Env ready. CUDA: True
+18.3s	170	Device: Tesla T4
+18.3s	171	Source files copied: ['memory_module.py', 'sandbox.py', 'eval.py', 'model_surgery.py', 'session_manager.py']
+18.5s	172	Running isolation tests on NeuralMemoryModule...
+18.5s	173	(All must pass before attaching to any LLM)
+18.5s	174	
+19.6s	175	  PASS associative_storage: retrieval_error=0.0843
+20.2s	176	  PASS surprise_decay: 2.2200 -> 1.2913
+21.6s	177	  PASS reward_learning: all 3 pairs within 0.15 tolerance
+22.0s	178	  PASS generalisation: base=0.97, similar=0.95, diff=0.10
+22.6s	179	  PASS weight_norm_stability: 12.326 -> 8.355 (no NaN/Inf, retained >68% of initial norm)
+22.8s	180	         post-stress retrieval error: 0.1317 (functional: YES)
+22.8s	181	
+22.8s	182	All isolation tests passed. Safe to proceed to LLM integration.
+72.5s	183	Model loaded. Device: cuda:0
+78.4s	184	Write a Python function to reverse a string:
+78.4s	185	
+78.4s	186	```python
+78.4s	187	def reverse_string(s):
+78.4s	188	  """
+78.4s	189	  Reverses a string.
+78.4s	190	
+78.4s	191	  Args:
+78.4s	192	    s: The string to reverse.
+78.4s	193	
+78.4s	194	  Returns:
+78.4s	195	    The reversed string.
+78.4s	196	  """
+78.4s	197	  return s[::-1]
+78.4s	198	```
+78.4s	199	
+78.4s	200	**Explanation:**
+78.4s	201	
+78.4s	202	* **`def reverse_string(s):`**: This line defines a function named `
+79.3s	203	Perplexity before injection: 1.8748
+80.0s	204	  Memory injected at layer 4 (device=cuda:0, dtype=torch.float16)
+80.5s	205	  Memory injected at layer 8 (device=cuda:0, dtype=torch.float16)
+80.9s	206	  Memory injected at layer 16 (device=cuda:1, dtype=torch.float16)
+81.4s	207	  Memory injected at layer 24 (device=cuda:1, dtype=torch.float16)
+81.4s	208	  Trainable: 191,158,280 / 2,805,500,168 (6.814%)
+82.1s	209	Perplexity after injection:  1.8764
+82.1s	210	Delta: 0.09%  (must be < 1% to proceed)
+82.1s	211	
+82.1s	212	Gate OK. Safe to proceed.
+82.3s	213	  PASS correct code:     reward=1.0
+82.3s	214	  PASS wrong code:       reward=0.0
+84.5s	215	  PASS timeout:          reward=-0.1
+84.5s	216	  PASS HumanEval parser: reward=1.0
+84.5s	217	  PASS partial credit:   reward=0.67
+84.5s	218	
+84.5s	219	All sandbox tests passed.
+84.7s	220	Local file not found — downloading from HuggingFace datasets...
+88.2s	221	Saved 164 problems → /kaggle/working/problems/humaneval_raw.json
+88.2s	222	Loaded 164 raw HumanEval problems.
+88.2s	223	Calibrating 100 problems (target pass rate: 0.3–0.7)...
+88.2s	224	
+154.0s	225	  DROP HumanEval/0: too easy  (pass_rate=1.00)
+219.2s	226	  DROP HumanEval/1: too easy  (pass_rate=1.00)
+267.7s	227	  KEEP HumanEval/2: pass_rate=0.33
+330.4s	228	  KEEP HumanEval/3: pass_rate=0.67
+395.6s	229	  DROP HumanEval/4: too easy  (pass_rate=1.00)
+460.3s	230	  KEEP HumanEval/5: pass_rate=0.33
+525.2s	231	  DROP HumanEval/6: too hard  (pass_rate=0.00)
+590.4s	232	  DROP HumanEval/7: too hard  (pass_rate=0.00)
+656.1s	233	  KEEP HumanEval/8: pass_rate=0.67
+721.3s	234	  DROP HumanEval/9: too easy  (pass_rate=1.00)
+786.3s	235	  DROP HumanEval/10: too hard  (pass_rate=0.00)
+851.2s	236	  DROP HumanEval/11: too easy  (pass_rate=1.00)
+916.1s	237	  DROP HumanEval/12: too easy  (pass_rate=1.00)
+980.7s	238	  KEEP HumanEval/13: pass_rate=0.67
+1045.1s	239	  KEEP HumanEval/14: pass_rate=0.33
+1101.7s	240	  DROP HumanEval/15: too easy  (pass_rate=1.00)
+1166.4s	241	  DROP HumanEval/16: too easy  (pass_rate=1.00)
+1231.0s	242	  DROP HumanEval/17: too hard  (pass_rate=0.00)
+1295.9s	243	  KEEP HumanEval/18: pass_rate=0.67
+1357.0s	244	  DROP HumanEval/19: too hard  (pass_rate=0.00)
+1422.1s	245	  DROP HumanEval/20: too hard  (pass_rate=0.00)
+1486.6s	246	  DROP HumanEval/21: too hard  (pass_rate=0.00)
+1550.8s	247	  DROP HumanEval/22: too easy  (pass_rate=1.00)
+1608.4s	248	  DROP HumanEval/23: too easy  (pass_rate=1.00)
+1673.1s	249	  KEEP HumanEval/24: pass_rate=0.67
+1737.6s	250	  DROP HumanEval/25: too easy  (pass_rate=1.00)
+1802.0s	251	  DROP HumanEval/26: too hard  (pass_rate=0.00)
+1866.3s	252	  DROP HumanEval/27: too easy  (pass_rate=1.00)
+1916.4s	253	  DROP HumanEval/28: too hard  (pass_rate=0.00)
+1980.8s	254	  KEEP HumanEval/29: pass_rate=0.33
+2041.7s	255	  DROP HumanEval/30: too easy  (pass_rate=1.00)
+2106.3s	256	  DROP HumanEval/31: too easy  (pass_rate=1.00)
+2171.1s	257	  DROP HumanEval/32: too hard  (pass_rate=0.00)
+2235.7s	258	  DROP HumanEval/33: too hard  (pass_rate=0.00)
+2297.3s	259	  DROP HumanEval/34: too easy  (pass_rate=1.00)
+2361.7s	260	  DROP HumanEval/35: too easy  (pass_rate=1.00)
+2426.4s	261	  DROP HumanEval/36: too hard  (pass_rate=0.00)
+2491.3s	262	  DROP HumanEval/37: too hard  (pass_rate=0.00)
+2556.0s	263	  DROP HumanEval/38: too hard  (pass_rate=0.00)
+2620.8s	264	  DROP HumanEval/39: too hard  (pass_rate=0.00)
+2685.7s	265	  DROP HumanEval/40: too hard  (pass_rate=0.00)
+2750.5s	266	  DROP HumanEval/41: too hard  (pass_rate=0.00)
+2815.2s	267	  DROP HumanEval/42: too easy  (pass_rate=1.00)
+2880.2s	268	  KEEP HumanEval/43: pass_rate=0.33
+2944.9s	269	  DROP HumanEval/44: too hard  (pass_rate=0.00)
+3008.0s	270	  DROP HumanEval/45: too easy  (pass_rate=1.00)
+3072.1s	271	  DROP HumanEval/46: too hard  (pass_rate=0.00)
+3136.9s	272	  DROP HumanEval/47: too easy  (pass_rate=1.00)
+3201.4s	273	  DROP HumanEval/48: too easy  (pass_rate=1.00)
+3266.0s	274	  KEEP HumanEval/49: pass_rate=0.33
+3330.7s	275	  DROP HumanEval/50: too hard  (pass_rate=0.00)
+3395.5s	276	  DROP HumanEval/51: too easy  (pass_rate=1.00)
+3458.8s	277	  DROP HumanEval/52: too hard  (pass_rate=0.00)
+3523.4s	278	  DROP HumanEval/53: too hard  (pass_rate=0.00)
+3587.0s	279	  KEEP HumanEval/54: pass_rate=0.67
+3651.5s	280	  DROP HumanEval/55: too easy  (pass_rate=1.00)
+3715.8s	281	  DROP HumanEval/56: too easy  (pass_rate=1.00)
+3778.5s	282	  DROP HumanEval/57: too easy  (pass_rate=1.00)
+3842.9s	283	  DROP HumanEval/58: too easy  (pass_rate=1.00)
+3907.2s	284	  DROP HumanEval/59: too hard  (pass_rate=0.00)
+3972.0s	285	  DROP HumanEval/60: too easy  (pass_rate=1.00)
+4036.8s	286	  DROP HumanEval/61: too easy  (pass_rate=1.00)
+4101.8s	287	  DROP HumanEval/62: too hard  (pass_rate=0.00)
+4166.6s	288	  DROP HumanEval/63: too hard  (pass_rate=0.00)
+4231.2s	289	  DROP HumanEval/64: too hard  (pass_rate=0.00)
+4295.7s	290	  DROP HumanEval/65: too hard  (pass_rate=0.00)
+4360.5s	291	  KEEP HumanEval/66: pass_rate=0.67
+4425.6s	292	  DROP HumanEval/67: too hard  (pass_rate=0.00)
+4490.8s	293	  DROP HumanEval/68: too easy  (pass_rate=1.00)
+4555.4s	294	  DROP HumanEval/69: too easy  (pass_rate=1.00)
+4620.0s	295	  DROP HumanEval/70: too hard  (pass_rate=0.00)
+4684.9s	296	  DROP HumanEval/71: too hard  (pass_rate=0.00)
+4749.6s	297	  DROP HumanEval/72: too easy  (pass_rate=1.00)
+4814.1s	298	  KEEP HumanEval/73: pass_rate=0.33
+4878.8s	299	  DROP HumanEval/74: too hard  (pass_rate=0.00)
+4943.4s	300	  DROP HumanEval/75: too hard  (pass_rate=0.00)
+5008.5s	301	  DROP HumanEval/76: too hard  (pass_rate=0.00)
+5070.9s	302	  DROP HumanEval/77: too hard  (pass_rate=0.00)
+5136.2s	303	  DROP HumanEval/78: too easy  (pass_rate=1.00)
+5201.2s	304	  DROP HumanEval/79: too easy  (pass_rate=1.00)
+5266.1s	305	  DROP HumanEval/80: too hard  (pass_rate=0.00)
+5331.7s	306	  DROP HumanEval/81: too hard  (pass_rate=0.00)
+5395.7s	307	  DROP HumanEval/82: too hard  (pass_rate=0.00)
+5460.1s	308	  DROP HumanEval/83: too hard  (pass_rate=0.00)
+5525.0s	309	  DROP HumanEval/84: too hard  (pass_rate=0.00)
+5589.4s	310	  DROP HumanEval/85: too hard  (pass_rate=0.00)
+5654.4s	311	  DROP HumanEval/86: too easy  (pass_rate=1.00)
+5719.0s	312	  DROP HumanEval/87: too hard  (pass_rate=0.00)
+5782.0s	313	  DROP HumanEval/88: too hard  (pass_rate=0.00)
+5846.7s	314	  KEEP HumanEval/89: pass_rate=0.67
+5910.8s	315	  DROP HumanEval/90: too hard  (pass_rate=0.00)
+5975.9s	316	  DROP HumanEval/91: too hard  (pass_rate=0.00)
+6041.1s	317	  DROP HumanEval/92: too hard  (pass_rate=0.00)
+6106.1s	318	  KEEP HumanEval/93: pass_rate=0.33
+6171.1s	319	  DROP HumanEval/94: too hard  (pass_rate=0.00)
+6236.0s	320	  DROP HumanEval/95: too hard  (pass_rate=0.00)
+6301.1s	321	  DROP HumanEval/96: too hard  (pass_rate=0.00)
+6363.5s	322	  DROP HumanEval/97: too easy  (pass_rate=1.00)
+6428.0s	323	  DROP HumanEval/98: too easy  (pass_rate=1.00)
+6487.8s	324	  DROP HumanEval/99: too hard  (pass_rate=0.00)
+6487.8s	325	
+6487.8s	326	Calibrated set: 16 / 100 problems
+6487.8s	327	Saved calibrated set → /kaggle/working/problems/calibrated_20.json
+6487.8s	328	
+6487.8s	329	Calibrated set: 16 problems saved.
+6488.0s	330	No prior memory state. Starting fresh.
+6518.3s	331	  [FAIL] HumanEval/2: reward=0.00
+6564.6s	332	  [PASS] HumanEval/3: reward=1.00
+6601.7s	333	  [FAIL] HumanEval/5: reward=0.00
+6602.0s	334	Memory saved: memory_20260526_101241.pt
+6602.0s	335	
+6602.0s	336	Session complete: 33.3% (1/3)
+6602.0s	337	Log: session_20260526_101242.json
+6602.0s	338	{
+6602.0s	339	  "pass_rate": 0.3333,
+6602.0s	340	  "n_passed": 1,
+6602.0s	341	  "n_total": 3,
+6602.0s	342	  "results": [
+6602.0s	343	    {
+6602.0s	344	      "problem_id": "HumanEval/2",
+6602.0s	345	      "reward": 0.0,
+6602.0s	346	      "passed": false,
+6602.0s	347	      "feedback": "SyntaxError: invalid syntax (<unknown>, line 13)"
+6602.0s	348	    },
+6602.0s	349	    {
+6602.0s	350	      "problem_id": "HumanEval/3",
+6602.0s	351	      "reward": 1.0,
+6602.0s	352	      "passed": true,
+6602.0s	353	      "feedback": "Result for [1, 2, 3]: False\nResult for [1, 2, -4, 5]: True\n  Assert 1/6: PASS\n  Assert 2/6: PASS\n  Assert 3/6: PASS\n  Assert 4/6: PASS\n  Assert 5/6: PASS\n  Assert 6/6: PASS\n\u2192 6/6 assertions passed (reward=1.00)"
+6602.0s	354	    },
+6602.0s	355	    {
+6602.0s	356	      "problem_id": "HumanEval/5",
+6602.0s	357	      "reward": 0.0,
+6602.0s	358	      "passed": false,
+6602.0s	359	      "feedback": "SyntaxError: invalid syntax (<unknown>, line 12)"
+6602.0s	360	    }
+6602.0s	361	  ],
+6602.0s	362	  "memory_checkpoint": "memory_states/smoke_test/memory_20260526_101241.pt"
+6602.0s	363	}
+6602.0s	364	
+6602.0s	365	Checkpoint written: memory_20260526_101241.pt  ✓
+6602.2s	366	
+6602.2s	367	==================================================
+6602.2s	368	SESSION 1/5
+6602.2s	369	==================================================
+6602.2s	370	No prior memory state. Starting fresh.
+6635.6s	371	  [FAIL] HumanEval/2: reward=0.00
+6680.2s	372	  [PASS] HumanEval/3: reward=1.00
+6719.8s	373	  [PASS] HumanEval/5: reward=1.00
+6760.5s	374	  [PASS] HumanEval/8: reward=1.00
+6796.7s	375	  [PASS] HumanEval/13: reward=1.00
+6830.3s	376	  [FAIL] HumanEval/14: reward=0.00
+6872.1s	377	  [PASS] HumanEval/18: reward=1.00
+6904.7s	378	  [FAIL] HumanEval/24: reward=0.00
+6941.4s	379	  [FAIL] HumanEval/29: reward=0.00
+6992.0s	380	  [PASS] HumanEval/43: reward=1.00
+7029.0s	381	  [FAIL] HumanEval/49: reward=0.14
+7072.2s	382	  [PASS] HumanEval/54: reward=1.00
+7108.8s	383	  [FAIL] HumanEval/66: reward=0.30
+7156.5s	384	  [PASS] HumanEval/73: reward=1.00
+7201.9s	385	  [PASS] HumanEval/89: reward=1.00
+7238.0s	386	  [FAIL] HumanEval/93: reward=0.00
+7238.4s	387	Memory saved: memory_20260526_102317.pt
+7238.4s	388	
+7238.4s	389	Session complete: 56.2% (9/16)
+7238.4s	390	Log: session_20260526_102318.json
+7238.4s	391	
+7238.4s	392	── Memory Diagnostics ──
+7238.4s	393	  Layer 4: weight_norm=1.1004
+7238.4s	394	  Layer 8: weight_norm=1.6572
+7238.4s	395	  Layer 16: weight_norm=1.1048
+7238.4s	396	  Layer 24: weight_norm=8.1686
+7238.4s	397	
+7238.4s	398	==================================================
+7238.4s	399	SESSION 2/5
+7238.4s	400	==================================================
+7238.7s	401	Loaded memory: memory_20260526_102317.pt
+7265.1s	402	  [FAIL] HumanEval/2: reward=0.00
+7300.7s	403	  [FAIL] HumanEval/3: reward=0.00
+7338.7s	404	  [PASS] HumanEval/5: reward=1.00
+7378.5s	405	  [PASS] HumanEval/8: reward=1.00
+7414.5s	406	  [PASS] HumanEval/13: reward=1.00
+7446.5s	407	  [FAIL] HumanEval/14: reward=0.00
+7485.4s	408	  [PASS] HumanEval/18: reward=1.00
+7517.8s	409	  [FAIL] HumanEval/24: reward=0.00
+7551.3s	410	  [FAIL] HumanEval/29: reward=0.00
+7589.5s	411	  [FAIL] HumanEval/43: reward=0.56
+7624.7s	412	  [FAIL] HumanEval/49: reward=0.29
+7665.9s	413	  [PASS] HumanEval/54: reward=1.00
+7703.2s	414	  [PASS] HumanEval/66: reward=1.00
+7739.7s	415	  [FAIL] HumanEval/73: reward=0.50
+7779.0s	416	  [PASS] HumanEval/89: reward=1.00
+7821.9s	417	  [PASS] HumanEval/93: reward=1.00
+7822.3s	418	Memory saved: memory_20260526_103301.pt
+7822.3s	419	
+7822.3s	420	Session complete: 50.0% (8/16)
+7822.3s	421	Log: session_20260526_103302.json
+7822.3s	422	
+7822.3s	423	── Memory Diagnostics ──
+7822.3s	424	  Layer 4: weight_norm=0.3630
+7822.3s	425	  Layer 8: weight_norm=2.5445
+7822.3s	426	  Layer 16: weight_norm=2.1947
+7822.3s	427	  Layer 24: weight_norm=8.2999
+7822.3s	428	
+7822.3s	429	==================================================
+7822.3s	430	SESSION 3/5
+7822.3s	431	==================================================
+7822.5s	432	Loaded memory: memory_20260526_103301.pt
+7851.1s	433	  [FAIL] HumanEval/2: reward=0.00
+7890.2s	434	  [PASS] HumanEval/3: reward=1.00
+7925.0s	435	  [FAIL] HumanEval/5: reward=0.00
+7962.4s	436	  [PASS] HumanEval/8: reward=1.00
+7995.9s	437	  [PASS] HumanEval/13: reward=1.00
+8027.6s	438	  [FAIL] HumanEval/14: reward=0.00
+8065.9s	439	  [PASS] HumanEval/18: reward=1.00
+8096.6s	440	  [FAIL] HumanEval/24: reward=0.00
+8133.7s	441	  [PASS] HumanEval/29: reward=1.00
+8171.3s	442	  [FAIL] HumanEval/43: reward=0.67
+8206.5s	443	  [FAIL] HumanEval/49: reward=0.14
+8249.6s	444	  [PASS] HumanEval/54: reward=1.00
+8289.4s	445	  [PASS] HumanEval/66: reward=1.00
+8326.4s	446	  [FAIL] HumanEval/73: reward=0.00
+8368.0s	447	  [PASS] HumanEval/89: reward=1.00
+8411.5s	448	  [PASS] HumanEval/93: reward=1.00
+8412.0s	449	Memory saved: memory_20260526_104251.pt
+8412.0s	450	
+8412.0s	451	Session complete: 56.2% (9/16)
+8412.0s	452	Log: session_20260526_104252.json
+8412.0s	453	
+8412.0s	454	── Memory Diagnostics ──
+8412.0s	455	  Layer 4: weight_norm=0.4876
+8412.0s	456	  Layer 8: weight_norm=2.1028
+8412.0s	457	  Layer 16: weight_norm=2.2589
+8412.0s	458	  Layer 24: weight_norm=8.1946
+8412.0s	459	
+8412.0s	460	==================================================
+8412.0s	461	SESSION 4/5
+8412.0s	462	==================================================
+8412.3s	463	Loaded memory: memory_20260526_104251.pt
+8436.8s	464	  [FAIL] HumanEval/2: reward=0.00
+8471.9s	465	  [PASS] HumanEval/3: reward=1.00
+8508.1s	466	  [PASS] HumanEval/5: reward=1.00
+8547.6s	467	  [PASS] HumanEval/8: reward=1.00
+8581.2s	468	  [PASS] HumanEval/13: reward=1.00
+8611.9s	469	  [FAIL] HumanEval/14: reward=0.00
+8647.2s	470	  [PASS] HumanEval/18: reward=1.00
+8682.0s	471	  [PASS] HumanEval/24: reward=1.00
+8719.5s	472	  [PASS] HumanEval/29: reward=1.00
+8769.4s	473	  [PASS] HumanEval/43: reward=1.00
+8806.7s	474	  [FAIL] HumanEval/49: reward=0.29
+8852.4s	475	  [PASS] HumanEval/54: reward=1.00
+8893.1s	476	  [PASS] HumanEval/66: reward=1.00
+8942.8s	477	  [FAIL] HumanEval/73: reward=0.88
+8986.7s	478	  [PASS] HumanEval/89: reward=1.00
+9022.8s	479	  [FAIL] HumanEval/93: reward=0.00
+9023.3s	480	Memory saved: memory_20260526_105302.pt
+9023.3s	481	
+9023.3s	482	Session complete: 68.8% (11/16)
+9023.3s	483	Log: session_20260526_105303.json
+9023.3s	484	
+9023.3s	485	── Memory Diagnostics ──
+9023.3s	486	  Layer 4: weight_norm=2.4409
+9023.3s	487	  Layer 8: weight_norm=1.5706
+9023.3s	488	  Layer 16: weight_norm=2.1413
+9023.3s	489	  Layer 24: weight_norm=11.0477
+9023.3s	490	
+9023.3s	491	==================================================
+9023.3s	492	SESSION 5/5
+9023.3s	493	==================================================
+9023.3s	494	Loaded memory: memory_20260526_105302.pt
+9048.7s	495	  [FAIL] HumanEval/2: reward=0.00
+9089.3s	496	  [PASS] HumanEval/3: reward=1.00
+9128.2s	497	  [PASS] HumanEval/5: reward=1.00
+9167.4s	498	  [PASS] HumanEval/8: reward=1.00
+9203.4s	499	  [PASS] HumanEval/13: reward=1.00
+9235.9s	500	  [FAIL] HumanEval/14: reward=0.00
+9276.6s	501	  [PASS] HumanEval/18: reward=1.00
+9310.4s	502	  [PASS] HumanEval/24: reward=1.00
+9348.1s	503	  [PASS] HumanEval/29: reward=1.00
+9385.6s	504	  [FAIL] HumanEval/43: reward=0.56
+9428.8s	505	  [PASS] HumanEval/49: reward=1.00
+9472.1s	506	  [PASS] HumanEval/54: reward=1.00
+9513.3s	507	  [PASS] HumanEval/66: reward=1.00
+9551.4s	508	  [FAIL] HumanEval/73: reward=0.50
+9596.1s	509	  [PASS] HumanEval/89: reward=1.00
+6.6s	510	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.6s	511	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.6s	512	0.00s - to python to disable frozen modules.
+6.6s	513	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.1s	514	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.1s	515	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.1s	516	0.00s - to python to disable frozen modules.
+7.1s	517	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+45.6s	518	`torch_dtype` is deprecated! Use `dtype` instead!
+45.6s	519	
+45.6s	520	`torch_dtype` is deprecated! Use `dtype` instead!
+72.3s	521	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+72.3s	522	
+72.3s	523	The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+11.0s	524	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+11.2s	525	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 81.3 MB/s eta 0:00:00
+18.3s	526	Env ready. CUDA: True
+18.3s	527	Device: Tesla T4
+18.3s	528	Source files copied: ['memory_module.py', 'sandbox.py', 'eval.py', 'model_surgery.py', 'session_manager.py']
+18.5s	529	Running isolation tests on NeuralMemoryModule...
+18.5s	530	(All must pass before attaching to any LLM)
+18.5s	531	
+19.6s	532	  PASS associative_storage: retrieval_error=0.0843
+20.2s	533	  PASS surprise_decay: 2.2200 -> 1.2913
+21.6s	534	  PASS reward_learning: all 3 pairs within 0.15 tolerance
+22.0s	535	  PASS generalisation: base=0.97, similar=0.95, diff=0.10
+22.6s	536	  PASS weight_norm_stability: 12.326 -> 8.355 (no NaN/Inf, retained >68% of initial norm)
+22.8s	537	         post-stress retrieval error: 0.1317 (functional: YES)
+22.8s	538	
+22.8s	539	All isolation tests passed. Safe to proceed to LLM integration.
+72.5s	540	Model loaded. Device: cuda:0
+78.4s	541	Write a Python function to reverse a string:
+78.4s	542	
+78.4s	543	```python
+78.4s	544	def reverse_string(s):
+78.4s	545	  """
+78.4s	546	  Reverses a string.
+78.4s	547	
+78.4s	548	  Args:
+78.4s	549	    s: The string to reverse.
+78.4s	550	
+78.4s	551	  Returns:
+78.4s	552	    The reversed string.
+78.4s	553	  """
+78.4s	554	  return s[::-1]
+78.4s	555	```
+78.4s	556	
+78.4s	557	**Explanation:**
+78.4s	558	
+78.4s	559	* **`def reverse_string(s):`**: This line defines a function named `
+79.3s	560	Perplexity before injection: 1.8748
+80.0s	561	  Memory injected at layer 4 (device=cuda:0, dtype=torch.float16)
+80.5s	562	  Memory injected at layer 8 (device=cuda:0, dtype=torch.float16)
+80.9s	563	  Memory injected at layer 16 (device=cuda:1, dtype=torch.float16)
+81.4s	564	  Memory injected at layer 24 (device=cuda:1, dtype=torch.float16)
+81.4s	565	  Trainable: 191,158,280 / 2,805,500,168 (6.814%)
+82.1s	566	Perplexity after injection:  1.8764
+82.1s	567	Delta: 0.09%  (must be < 1% to proceed)
+82.1s	568	
+82.1s	569	Gate OK. Safe to proceed.
+82.3s	570	  PASS correct code:     reward=1.0
+82.3s	571	  PASS wrong code:       reward=0.0
+84.5s	572	  PASS timeout:          reward=-0.1
+84.5s	573	  PASS HumanEval parser: reward=1.0
+84.5s	574	  PASS partial credit:   reward=0.67
+84.5s	575	
+84.5s	576	All sandbox tests passed.
+84.7s	577	Local file not found — downloading from HuggingFace datasets...
+88.2s	578	Saved 164 problems → /kaggle/working/problems/humaneval_raw.json
+88.2s	579	Loaded 164 raw HumanEval problems.
+88.2s	580	Calibrating 100 problems (target pass rate: 0.3–0.7)...
+88.2s	581	
+154.0s	582	  DROP HumanEval/0: too easy  (pass_rate=1.00)
+219.2s	583	  DROP HumanEval/1: too easy  (pass_rate=1.00)
+267.7s	584	  KEEP HumanEval/2: pass_rate=0.33
+330.4s	585	  KEEP HumanEval/3: pass_rate=0.67
+395.6s	586	  DROP HumanEval/4: too easy  (pass_rate=1.00)
+460.3s	587	  KEEP HumanEval/5: pass_rate=0.33
+525.2s	588	  DROP HumanEval/6: too hard  (pass_rate=0.00)
+590.4s	589	  DROP HumanEval/7: too hard  (pass_rate=0.00)
+656.1s	590	  KEEP HumanEval/8: pass_rate=0.67
+721.3s	591	  DROP HumanEval/9: too easy  (pass_rate=1.00)
+786.3s	592	  DROP HumanEval/10: too hard  (pass_rate=0.00)
+851.2s	593	  DROP HumanEval/11: too easy  (pass_rate=1.00)
+916.1s	594	  DROP HumanEval/12: too easy  (pass_rate=1.00)
+980.7s	595	  KEEP HumanEval/13: pass_rate=0.67
+1045.1s	596	  KEEP HumanEval/14: pass_rate=0.33
+1101.7s	597	  DROP HumanEval/15: too easy  (pass_rate=1.00)
+1166.4s	598	  DROP HumanEval/16: too easy  (pass_rate=1.00)
+1231.0s	599	  DROP HumanEval/17: too hard  (pass_rate=0.00)
+1295.9s	600	  KEEP HumanEval/18: pass_rate=0.67
+1357.0s	601	  DROP HumanEval/19: too hard  (pass_rate=0.00)
+1422.1s	602	  DROP HumanEval/20: too hard  (pass_rate=0.00)
+1486.6s	603	  DROP HumanEval/21: too hard  (pass_rate=0.00)
+1550.8s	604	  DROP HumanEval/22: too easy  (pass_rate=1.00)
+1608.4s	605	  DROP HumanEval/23: too easy  (pass_rate=1.00)
+1673.1s	606	  KEEP HumanEval/24: pass_rate=0.67
+1737.6s	607	  DROP HumanEval/25: too easy  (pass_rate=1.00)
+1802.0s	608	  DROP HumanEval/26: too hard  (pass_rate=0.00)
+1866.3s	609	  DROP HumanEval/27: too easy  (pass_rate=1.00)
+1916.4s	610	  DROP HumanEval/28: too hard  (pass_rate=0.00)
+1980.8s	611	  KEEP HumanEval/29: pass_rate=0.33
+2041.7s	612	  DROP HumanEval/30: too easy  (pass_rate=1.00)
+2106.3s	613	  DROP HumanEval/31: too easy  (pass_rate=1.00)
+2171.1s	614	  DROP HumanEval/32: too hard  (pass_rate=0.00)
+2235.7s	615	  DROP HumanEval/33: too hard  (pass_rate=0.00)
+2297.3s	616	  DROP HumanEval/34: too easy  (pass_rate=1.00)
+2361.7s	617	  DROP HumanEval/35: too easy  (pass_rate=1.00)
+2426.4s	618	  DROP HumanEval/36: too hard  (pass_rate=0.00)
+2491.3s	619	  DROP HumanEval/37: too hard  (pass_rate=0.00)
+2556.0s	620	  DROP HumanEval/38: too hard  (pass_rate=0.00)
+2620.8s	621	  DROP HumanEval/39: too hard  (pass_rate=0.00)
+2685.7s	622	  DROP HumanEval/40: too hard  (pass_rate=0.00)
+2750.5s	623	  DROP HumanEval/41: too hard  (pass_rate=0.00)
+2815.2s	624	  DROP HumanEval/42: too easy  (pass_rate=1.00)
+2880.2s	625	  KEEP HumanEval/43: pass_rate=0.33
+2944.9s	626	  DROP HumanEval/44: too hard  (pass_rate=0.00)
+3008.0s	627	  DROP HumanEval/45: too easy  (pass_rate=1.00)
+3072.1s	628	  DROP HumanEval/46: too hard  (pass_rate=0.00)
+3136.9s	629	  DROP HumanEval/47: too easy  (pass_rate=1.00)
+3201.4s	630	  DROP HumanEval/48: too easy  (pass_rate=1.00)
+3266.0s	631	  KEEP HumanEval/49: pass_rate=0.33
+3330.7s	632	  DROP HumanEval/50: too hard  (pass_rate=0.00)
+3395.5s	633	  DROP HumanEval/51: too easy  (pass_rate=1.00)
+3458.8s	634	  DROP HumanEval/52: too hard  (pass_rate=0.00)
+3523.4s	635	  DROP HumanEval/53: too hard  (pass_rate=0.00)
+3587.0s	636	  KEEP HumanEval/54: pass_rate=0.67
+3651.5s	637	  DROP HumanEval/55: too easy  (pass_rate=1.00)
+3715.8s	638	  DROP HumanEval/56: too easy  (pass_rate=1.00)
+3778.5s	639	  DROP HumanEval/57: too easy  (pass_rate=1.00)
+3842.9s	640	  DROP HumanEval/58: too easy  (pass_rate=1.00)
+3907.2s	641	  DROP HumanEval/59: too hard  (pass_rate=0.00)
+3972.0s	642	  DROP HumanEval/60: too easy  (pass_rate=1.00)
+4036.8s	643	  DROP HumanEval/61: too easy  (pass_rate=1.00)
+4101.8s	644	  DROP HumanEval/62: too hard  (pass_rate=0.00)
+4166.6s	645	  DROP HumanEval/63: too hard  (pass_rate=0.00)
+4231.2s	646	  DROP HumanEval/64: too hard  (pass_rate=0.00)
+4295.7s	647	  DROP HumanEval/65: too hard  (pass_rate=0.00)
+4360.5s	648	  KEEP HumanEval/66: pass_rate=0.67
+4425.6s	649	  DROP HumanEval/67: too hard  (pass_rate=0.00)
+4490.8s	650	  DROP HumanEval/68: too easy  (pass_rate=1.00)
+4555.4s	651	  DROP HumanEval/69: too easy  (pass_rate=1.00)
+4620.0s	652	  DROP HumanEval/70: too hard  (pass_rate=0.00)
+4684.9s	653	  DROP HumanEval/71: too hard  (pass_rate=0.00)
+4749.6s	654	  DROP HumanEval/72: too easy  (pass_rate=1.00)
+4814.1s	655	  KEEP HumanEval/73: pass_rate=0.33
+4878.8s	656	  DROP HumanEval/74: too hard  (pass_rate=0.00)
+4943.4s	657	  DROP HumanEval/75: too hard  (pass_rate=0.00)
+5008.5s	658	  DROP HumanEval/76: too hard  (pass_rate=0.00)
+5070.9s	659	  DROP HumanEval/77: too hard  (pass_rate=0.00)
+5136.2s	660	  DROP HumanEval/78: too easy  (pass_rate=1.00)
+5201.2s	661	  DROP HumanEval/79: too easy  (pass_rate=1.00)
+5266.1s	662	  DROP HumanEval/80: too hard  (pass_rate=0.00)
+5331.7s	663	  DROP HumanEval/81: too hard  (pass_rate=0.00)
+5395.7s	664	  DROP HumanEval/82: too hard  (pass_rate=0.00)
+5460.1s	665	  DROP HumanEval/83: too hard  (pass_rate=0.00)
+5525.0s	666	  DROP HumanEval/84: too hard  (pass_rate=0.00)
+5589.4s	667	  DROP HumanEval/85: too hard  (pass_rate=0.00)
+5654.4s	668	  DROP HumanEval/86: too easy  (pass_rate=1.00)
+5719.0s	669	  DROP HumanEval/87: too hard  (pass_rate=0.00)
+5782.0s	670	  DROP HumanEval/88: too hard  (pass_rate=0.00)
+5846.7s	671	  KEEP HumanEval/89: pass_rate=0.67
+5910.8s	672	  DROP HumanEval/90: too hard  (pass_rate=0.00)
+5975.9s	673	  DROP HumanEval/91: too hard  (pass_rate=0.00)
+6041.1s	674	  DROP HumanEval/92: too hard  (pass_rate=0.00)
+6106.1s	675	  KEEP HumanEval/93: pass_rate=0.33
+6171.1s	676	  DROP HumanEval/94: too hard  (pass_rate=0.00)
+6236.0s	677	  DROP HumanEval/95: too hard  (pass_rate=0.00)
+6301.1s	678	  DROP HumanEval/96: too hard  (pass_rate=0.00)
+6363.5s	679	  DROP HumanEval/97: too easy  (pass_rate=1.00)
+6428.0s	680	  DROP HumanEval/98: too easy  (pass_rate=1.00)
+6487.8s	681	  DROP HumanEval/99: too hard  (pass_rate=0.00)
+6487.8s	682	
+6487.8s	683	Calibrated set: 16 / 100 problems
+6487.8s	684	Saved calibrated set → /kaggle/working/problems/calibrated_20.json
+6487.8s	685	
+6487.8s	686	Calibrated set: 16 problems saved.
+6488.0s	687	No prior memory state. Starting fresh.
+6518.3s	688	  [FAIL] HumanEval/2: reward=0.00
+6564.6s	689	  [PASS] HumanEval/3: reward=1.00
+6601.7s	690	  [FAIL] HumanEval/5: reward=0.00
+6602.0s	691	Memory saved: memory_20260526_101241.pt
+6602.0s	692	
+6602.0s	693	Session complete: 33.3% (1/3)
+6602.0s	694	Log: session_20260526_101242.json
+6602.0s	695	{
+6602.0s	696	  "pass_rate": 0.3333,
+6602.0s	697	  "n_passed": 1,
+6602.0s	698	  "n_total": 3,
+6602.0s	699	  "results": [
+6602.0s	700	    {
+6602.0s	701	      "problem_id": "HumanEval/2",
+6602.0s	702	      "reward": 0.0,
+6602.0s	703	      "passed": false,
+6602.0s	704	      "feedback": "SyntaxError: invalid syntax (<unknown>, line 13)"
+6602.0s	705	    },
+6602.0s	706	    {
+6602.0s	707	      "problem_id": "HumanEval/3",
+6602.0s	708	      "reward": 1.0,
+6602.0s	709	      "passed": true,
+6602.0s	710	      "feedback": "Result for [1, 2, 3]: False\nResult for [1, 2, -4, 5]: True\n  Assert 1/6: PASS\n  Assert 2/6: PASS\n  Assert 3/6: PASS\n  Assert 4/6: PASS\n  Assert 5/6: PASS\n  Assert 6/6: PASS\n\u2192 6/6 assertions passed (reward=1.00)"
+6602.0s	711	    },
+6602.0s	712	    {
+6602.0s	713	      "problem_id": "HumanEval/5",
+6602.0s	714	      "reward": 0.0,
+6602.0s	715	      "passed": false,
+6602.0s	716	      "feedback": "SyntaxError: invalid syntax (<unknown>, line 12)"
+6602.0s	717	    }
+6602.0s	718	  ],
+6602.0s	719	  "memory_checkpoint": "memory_states/smoke_test/memory_20260526_101241.pt"
+6602.0s	720	}
+6602.0s	721	
+6602.0s	722	Checkpoint written: memory_20260526_101241.pt  ✓
+6602.2s	723	
+6602.2s	724	==================================================
+6602.2s	725	SESSION 1/5
+6602.2s	726	==================================================
+6602.2s	727	No prior memory state. Starting fresh.
+6635.6s	728	  [FAIL] HumanEval/2: reward=0.00
+6680.2s	729	  [PASS] HumanEval/3: reward=1.00
+6719.8s	730	  [PASS] HumanEval/5: reward=1.00
+6760.5s	731	  [PASS] HumanEval/8: reward=1.00
+6796.7s	732	  [PASS] HumanEval/13: reward=1.00
+6830.3s	733	  [FAIL] HumanEval/14: reward=0.00
+6872.1s	734	  [PASS] HumanEval/18: reward=1.00
+6904.7s	735	  [FAIL] HumanEval/24: reward=0.00
+6941.4s	736	  [FAIL] HumanEval/29: reward=0.00
+6992.0s	737	  [PASS] HumanEval/43: reward=1.00
+7029.0s	738	  [FAIL] HumanEval/49: reward=0.14
+7072.2s	739	  [PASS] HumanEval/54: reward=1.00
+7108.8s	740	  [FAIL] HumanEval/66: reward=0.30
+7156.5s	741	  [PASS] HumanEval/73: reward=1.00
+7201.9s	742	  [PASS] HumanEval/89: reward=1.00
+7238.0s	743	  [FAIL] HumanEval/93: reward=0.00
+7238.4s	744	Memory saved: memory_20260526_102317.pt
+7238.4s	745	
+7238.4s	746	Session complete: 56.2% (9/16)
+7238.4s	747	Log: session_20260526_102318.json
+7238.4s	748	
+7238.4s	749	── Memory Diagnostics ──
+7238.4s	750	  Layer 4: weight_norm=1.1004
+7238.4s	751	  Layer 8: weight_norm=1.6572
+7238.4s	752	  Layer 16: weight_norm=1.1048
+7238.4s	753	  Layer 24: weight_norm=8.1686
+7238.4s	754	
+7238.4s	755	==================================================
+7238.4s	756	SESSION 2/5
+7238.4s	757	==================================================
+7238.7s	758	Loaded memory: memory_20260526_102317.pt
+7265.1s	759	  [FAIL] HumanEval/2: reward=0.00
+7300.7s	760	  [FAIL] HumanEval/3: reward=0.00
+7338.7s	761	  [PASS] HumanEval/5: reward=1.00
+7378.5s	762	  [PASS] HumanEval/8: reward=1.00
+7414.5s	763	  [PASS] HumanEval/13: reward=1.00
+7446.5s	764	  [FAIL] HumanEval/14: reward=0.00
+7485.4s	765	  [PASS] HumanEval/18: reward=1.00
+7517.8s	766	  [FAIL] HumanEval/24: reward=0.00
+7551.3s	767	  [FAIL] HumanEval/29: reward=0.00
+7589.5s	768	  [FAIL] HumanEval/43: reward=0.56
+7624.7s	769	  [FAIL] HumanEval/49: reward=0.29
+7665.9s	770	  [PASS] HumanEval/54: reward=1.00
+7703.2s	771	  [PASS] HumanEval/66: reward=1.00
+7739.7s	772	  [FAIL] HumanEval/73: reward=0.50
+7779.0s	773	  [PASS] HumanEval/89: reward=1.00
+7821.9s	774	  [PASS] HumanEval/93: reward=1.00
+7822.3s	775	Memory saved: memory_20260526_103301.pt
+7822.3s	776	
+7822.3s	777	Session complete: 50.0% (8/16)
+7822.3s	778	Log: session_20260526_103302.json
+7822.3s	779	
+7822.3s	780	── Memory Diagnostics ──
+7822.3s	781	  Layer 4: weight_norm=0.3630
+7822.3s	782	  Layer 8: weight_norm=2.5445
+7822.3s	783	  Layer 16: weight_norm=2.1947
+7822.3s	784	  Layer 24: weight_norm=8.2999
+7822.3s	785	
+7822.3s	786	==================================================
+7822.3s	787	SESSION 3/5
+7822.3s	788	==================================================
+7822.5s	789	Loaded memory: memory_20260526_103301.pt
+7851.1s	790	  [FAIL] HumanEval/2: reward=0.00
+7890.2s	791	  [PASS] HumanEval/3: reward=1.00
+7925.0s	792	  [FAIL] HumanEval/5: reward=0.00
+7962.4s	793	  [PASS] HumanEval/8: reward=1.00
+7995.9s	794	  [PASS] HumanEval/13: reward=1.00
+8027.6s	795	  [FAIL] HumanEval/14: reward=0.00
+8065.9s	796	  [PASS] HumanEval/18: reward=1.00
+8096.6s	797	  [FAIL] HumanEval/24: reward=0.00
+8133.7s	798	  [PASS] HumanEval/29: reward=1.00
+8171.3s	799	  [FAIL] HumanEval/43: reward=0.67
+8206.5s	800	  [FAIL] HumanEval/49: reward=0.14
+8249.6s	801	  [PASS] HumanEval/54: reward=1.00
+8289.4s	802	  [PASS] HumanEval/66: reward=1.00
+8326.4s	803	  [FAIL] HumanEval/73: reward=0.00
+8368.0s	804	  [PASS] HumanEval/89: reward=1.00
+8411.5s	805	  [PASS] HumanEval/93: reward=1.00
+8412.0s	806	Memory saved: memory_20260526_104251.pt
+8412.0s	807	
+8412.0s	808	Session complete: 56.2% (9/16)
+8412.0s	809	Log: session_20260526_104252.json
+8412.0s	810	
+8412.0s	811	── Memory Diagnostics ──
+8412.0s	812	  Layer 4: weight_norm=0.4876
+8412.0s	813	  Layer 8: weight_norm=2.1028
+8412.0s	814	  Layer 16: weight_norm=2.2589
+8412.0s	815	  Layer 24: weight_norm=8.1946
+8412.0s	816	
+8412.0s	817	==================================================
+8412.0s	818	SESSION 4/5
+8412.0s	819	==================================================
+8412.3s	820	Loaded memory: memory_20260526_104251.pt
+8436.8s	821	  [FAIL] HumanEval/2: reward=0.00
+8471.9s	822	  [PASS] HumanEval/3: reward=1.00
+8508.1s	823	  [PASS] HumanEval/5: reward=1.00
+8547.6s	824	  [PASS] HumanEval/8: reward=1.00
+8581.2s	825	  [PASS] HumanEval/13: reward=1.00
+8611.9s	826	  [FAIL] HumanEval/14: reward=0.00
+8647.2s	827	  [PASS] HumanEval/18: reward=1.00
+8682.0s	828	  [PASS] HumanEval/24: reward=1.00
+8719.5s	829	  [PASS] HumanEval/29: reward=1.00
+8769.4s	830	  [PASS] HumanEval/43: reward=1.00
+8806.7s	831	  [FAIL] HumanEval/49: reward=0.29
+8852.4s	832	  [PASS] HumanEval/54: reward=1.00
+8893.1s	833	  [PASS] HumanEval/66: reward=1.00
+8942.8s	834	  [FAIL] HumanEval/73: reward=0.88
+8986.7s	835	  [PASS] HumanEval/89: reward=1.00
+9022.8s	836	  [FAIL] HumanEval/93: reward=0.00
+9023.3s	837	Memory saved: memory_20260526_105302.pt
+9023.3s	838	
+9023.3s	839	Session complete: 68.8% (11/16)
+9023.3s	840	Log: session_20260526_105303.json
+9023.3s	841	
+9023.3s	842	── Memory Diagnostics ──
+9023.3s	843	  Layer 4: weight_norm=2.4409
+9023.3s	844	  Layer 8: weight_norm=1.5706
+9023.3s	845	  Layer 16: weight_norm=2.1413
+9023.3s	846	  Layer 24: weight_norm=11.0477
+9023.3s	847	
+9023.3s	848	==================================================
+9023.3s	849	SESSION 5/5
+9023.3s	850	==================================================
+9023.3s	851	Loaded memory: memory_20260526_105302.pt
+9048.7s	852	  [FAIL] HumanEval/2: reward=0.00
+9089.3s	853	  [PASS] HumanEval/3: reward=1.00
+9128.2s	854	  [PASS] HumanEval/5: reward=1.00
+9167.4s	855	  [PASS] HumanEval/8: reward=1.00
+9203.4s	856	  [PASS] HumanEval/13: reward=1.00
+9235.9s	857	  [FAIL] HumanEval/14: reward=0.00
+9276.6s	858	  [PASS] HumanEval/18: reward=1.00
+9310.4s	859	  [PASS] HumanEval/24: reward=1.00
+9348.1s	860	  [PASS] HumanEval/29: reward=1.00
+9385.6s	861	  [FAIL] HumanEval/43: reward=0.56
+9428.8s	862	  [PASS] HumanEval/49: reward=1.00
+9472.1s	863	  [PASS] HumanEval/54: reward=1.00
+9513.3s	864	  [PASS] HumanEval/66: reward=1.00
+9551.4s	865	  [FAIL] HumanEval/73: reward=0.50
+9596.1s	866	  [PASS] HumanEval/89: reward=1.00
+9640.5s	867	  [PASS] HumanEval/93: reward=1.00
+9640.8s	868	Memory saved: memory_20260526_110320.pt
+9640.8s	869	
+9640.8s	870	Session complete: 75.0% (12/16)
+9640.8s	871	Log: session_20260526_110320.json
+9640.8s	872	
+9640.8s	873	── Memory Diagnostics ──
+9640.8s	874	  Layer 4: weight_norm=1.9831
+9640.8s	875	  Layer 8: weight_norm=1.8841
+9640.8s	876	  Layer 16: weight_norm=1.9987
+9640.8s	877	  Layer 24: weight_norm=12.3435
+9640.8s	878	
+9640.8s	879	Session    Pass%      vs S1     
+9640.8s	880	───────────────────────────────────
+9640.8s	881	1          56.2      % +0.0%
+9640.8s	882	2          50.0      % -6.2%
+9640.8s	883	3          56.2      % +0.0%
+9640.8s	884	4          68.8      % +12.5%
+9640.8s	885	5          75.0      % +18.8%
+9640.8s	886	
+9640.8s	887	Improvement on previously-failed problems: 71.4%  (n=7)
+9640.8s	888	Baseline/no-memory target: ~5%  |  Memory model target: >30%
+9640.8s	889	
+9640.8s	890	Full results saved → /kaggle/working/results/eval_eval_memory_results.json
+9764.4s	891	Zipped → /kaggle/working/memory_checkpoint.zip  (904.5 MB)
+9764.4s	892	Download via: Output panel → memory_checkpoint.zip → Download
+9770.3s	893	/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+9770.3s	894	  cells[i][c] = re.sub('\\\\\|', '|', cell)
+9770.5s	895	/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+9770.5s	896	  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+9771.1s	897	[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+9771.5s	898	[NbConvertApp] Writing 188483 bytes to __notebook__.ipynb
+9773.8s	899	[NbConvertApp] Converting notebook __notebook__.ipynb to html
+9774.6s	900	[NbConvertApp] Writing 448207 bytes to __results__.html

@@ -1,0 +1,346 @@
+Time
+#
+Log Message
+6.4s	1	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.4s	2	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.4s	3	0.00s - to python to disable frozen modules.
+6.4s	4	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+6.9s	5	0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.9s	6	0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.9s	7	0.00s - to python to disable frozen modules.
+6.9s	8	0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+10.7s	9	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 67.6 MB/s eta 0:00:00
+10.9s	10	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 92.7 MB/s eta 0:00:00
+10.9s	11	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 67.6 MB/s eta 0:00:00
+10.9s	12	   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 92.7 MB/s eta 0:00:00
+14.1s	13	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+14.1s	14	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+14.1s	15	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.1s	16	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.1s	17	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.1s	18	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.1s	19	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.1s	20	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.1s	21	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	22	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+14.9s	23	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+14.9s	24	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	25	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	26	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.9s	27	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	28	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	29	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.9s	30	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	31	
+14.9s	32	ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+14.9s	33	dask-cuda 26.2.0 requires cuda-core==0.3.*, but you have cuda-core 1.0.1 which is incompatible.
+14.9s	34	dask-cuda 26.2.0 requires numba-cuda<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	35	distributed-ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	36	cuml-cu12 26.2.0 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.9s	37	cuml-cu12 26.2.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	38	ucxx-cu12 0.48.0 requires numba-cuda[cu12]<0.23.0,>=0.22.1, but you have numba-cuda 0.30.2 which is incompatible.
+14.9s	39	cudf-cu12 26.2.1 requires numba<0.62.0,>=0.60.0, but you have numba 0.65.1 which is incompatible.
+14.9s	40	cudf-cu12 26.2.1 requires numba-cuda[cu12]<0.23.0,>=0.22.2, but you have numba-cuda 0.30.2 which is incompatible.
+18.7s	41	Env ready. CUDA: True
+18.7s	42	Device: Tesla T4
+18.8s	43	Source files copied: ['eval.py', 'memory_policy.py', 'model_surgery.py', 'memory_module.py', 'sandbox.py', 'session_manager.py']
+18.8s	44	Problems copied: ['humaneval_raw.json', 'caliberated_20.json']
+18.9s	45	Running isolation tests on NeuralMemoryModule...
+18.9s	46	(All must pass before attaching to any LLM)
+18.9s	47	
+20.1s	48	  PASS associative_storage: retrieval_error=0.0840
+20.7s	49	  PASS surprise_decay: 2.2200 -> 1.2913
+22.4s	50	  PASS reward_learning: all 3 pairs within 0.15 tolerance
+22.9s	51	  PASS generalisation: base=0.94, similar=0.92, diff=0.12
+23.4s	52	  PASS weight_norm_stability: 12.326 -> 7.879 (no NaN/Inf, retained >64% of initial norm)
+23.7s	53	         post-stress retrieval error: 0.1324 (functional: YES)
+23.7s	54	
+23.7s	55	All isolation tests passed. Safe to proceed to LLM integration.
+23.7s	56	
+23.7s	57	Testing memory_policy...
+23.7s	58	memory_policy imported successfully.
+44.7s	59	`torch_dtype` is deprecated! Use `dtype` instead!
+44.7s	60	
+44.7s	61	`torch_dtype` is deprecated! Use `dtype` instead!
+68.7s	62	Model loaded. Device: cuda:0
+70.2s	63	Perplexity before injection: 1.7878
+70.6s	64	  Memory injected at layer 4 (device=cuda:0, dtype=torch.float16)
+71.1s	65	  Memory injected at layer 8 (device=cuda:0, dtype=torch.float16)
+71.6s	66	  Memory injected at layer 16 (device=cuda:1, dtype=torch.float16)
+72.0s	67	  Memory injected at layer 24 (device=cuda:1, dtype=torch.float16)
+72.0s	68	  Trainable: 191,158,280 / 2,805,500,168 (6.814%)
+72.3s	69	Perplexity after injection:  1.7894
+72.3s	70	Delta: 0.09%  (must be < 1% to proceed)
+72.3s	71	
+72.3s	72	Gate OK. Safe to proceed.
+72.4s	73	
+72.4s	74	Loaded 20 problems from /kaggle/working/problems/caliberated_20.json
+72.5s	75	
+72.5s	76	==================================================
+72.5s	77	TRAJECTORY COLLECTION — SESSION 1/6
+72.5s	78	==================================================
+72.5s	79	No prior memory state. Starting fresh.
+93.5s	80	  [FAIL] HumanEval/2: reward=0.00 (action=1)
+111.9s	81	  [FAIL] HumanEval/3: reward=0.00 (action=1)
+134.8s	82	  [PASS] HumanEval/5: reward=1.00 (action=0)
+157.0s	83	  [FAIL] HumanEval/8: reward=0.00 (action=1)
+179.6s	84	  [PASS] HumanEval/13: reward=1.00 (action=0)
+201.8s	85	  [FAIL] HumanEval/14: reward=0.00 (action=1)
+224.3s	86	  [PASS] HumanEval/18: reward=1.00 (action=0)
+246.5s	87	  [FAIL] HumanEval/24: reward=0.00 (action=1)
+269.1s	88	  [PASS] HumanEval/29: reward=1.00 (action=0)
+292.1s	89	  [PASS] HumanEval/43: reward=1.00 (action=0)
+314.4s	90	  [FAIL] HumanEval/49: reward=0.14 (action=1)
+337.4s	91	  [FAIL] HumanEval/54: reward=0.86 (action=0)
+359.8s	92	  [FAIL] HumanEval/66: reward=0.30 (action=1)
+383.0s	93	  [FAIL] HumanEval/73: reward=0.88 (action=0)
+405.9s	94	  [PASS] HumanEval/89: reward=1.00 (action=0)
+429.0s	95	  [PASS] HumanEval/93: reward=1.00 (action=0)
+451.3s	96	  [FAIL] HumanEval/111: reward=0.12 (action=1)
+474.3s	97	  [PASS] HumanEval/116: reward=1.00 (action=0)
+496.9s	98	  [FAIL] HumanEval/117: reward=0.29 (action=1)
+519.2s	99	  [FAIL] HumanEval/135: reward=0.40 (action=1)
+519.9s	100	Memory saved: memory_20260529_151146.pt
+519.9s	101	
+519.9s	102	Session complete: 40.0% (8/20)
+519.9s	103	Log: session_20260529_151147.json
+519.9s	104	
+519.9s	105	── Memory Diagnostics ──
+519.9s	106	  Layer 4: weight_norm=11.2209
+519.9s	107	  Layer 8: weight_norm=11.2239
+519.9s	108	  Layer 16: weight_norm=11.2207
+519.9s	109	  Layer 24: weight_norm=11.2322
+519.9s	110	
+519.9s	111	==================================================
+519.9s	112	TRAJECTORY COLLECTION — SESSION 2/6
+519.9s	113	==================================================
+520.3s	114	Loaded memory: memory_20260529_151146.pt
+539.2s	115	  [FAIL] HumanEval/2: reward=0.00 (action=1)
+562.2s	116	  [PASS] HumanEval/3: reward=1.00 (action=0)
+584.9s	117	  [PASS] HumanEval/5: reward=1.00 (action=0)
+607.6s	118	  [PASS] HumanEval/8: reward=1.00 (action=0)
+630.1s	119	  [PASS] HumanEval/13: reward=1.00 (action=0)
+652.2s	120	  [FAIL] HumanEval/14: reward=0.00 (action=1)
+674.8s	121	  [FAIL] HumanEval/18: reward=0.75 (action=0)
+697.2s	122	  [PASS] HumanEval/24: reward=1.00 (action=0)
+719.9s	123	  [PASS] HumanEval/29: reward=1.00 (action=0)
+743.4s	124	  [PASS] HumanEval/43: reward=1.00 (action=0)
+766.1s	125	  [PASS] HumanEval/49: reward=1.00 (action=0)
+788.9s	126	  [PASS] HumanEval/54: reward=1.00 (action=0)
+811.5s	127	  [PASS] HumanEval/66: reward=1.00 (action=0)
+834.0s	128	  [FAIL] HumanEval/73: reward=0.38 (action=1)
+856.9s	129	  [PASS] HumanEval/89: reward=1.00 (action=0)
+879.1s	130	  [FAIL] HumanEval/93: reward=0.00 (action=1)
+902.2s	131	  [FAIL] HumanEval/111: reward=0.88 (action=0)
+925.4s	132	  [PASS] HumanEval/116: reward=1.00 (action=0)
+948.5s	133	  [PASS] HumanEval/117: reward=1.00 (action=0)
+971.5s	134	  [PASS] HumanEval/135: reward=1.00 (action=0)
+972.5s	135	Memory saved: memory_20260529_151918.pt
+972.5s	136	
+972.5s	137	Session complete: 70.0% (14/20)
+972.5s	138	Log: session_20260529_151919.json
+972.5s	139	
+972.5s	140	── Memory Diagnostics ──
+972.5s	141	  Layer 4: weight_norm=11.2214
+972.5s	142	  Layer 8: weight_norm=11.2236
+972.5s	143	  Layer 16: weight_norm=11.2209
+972.5s	144	  Layer 24: weight_norm=11.2322
+972.5s	145	
+972.5s	146	==================================================
+972.5s	147	TRAJECTORY COLLECTION — SESSION 3/6
+972.5s	148	==================================================
+973.0s	149	Loaded memory: memory_20260529_151918.pt
+991.9s	150	  [FAIL] HumanEval/2: reward=0.00 (action=1)
+1015.0s	151	  [PASS] HumanEval/3: reward=1.00 (action=0)
+1037.5s	152	  [PASS] HumanEval/5: reward=1.00 (action=0)
+1060.7s	153	  [PASS] HumanEval/8: reward=1.00 (action=0)
+1083.2s	154	  [PASS] HumanEval/13: reward=1.00 (action=0)
+1104.8s	155	  [FAIL] HumanEval/14: reward=0.00 (action=1)
+1127.4s	156	  [PASS] HumanEval/18: reward=1.00 (action=0)
+1149.4s	157	  [FAIL] HumanEval/24: reward=0.00 (action=1)
+1172.0s	158	  [PASS] HumanEval/29: reward=1.00 (action=0)
+1194.4s	159	  [FAIL] HumanEval/43: reward=0.67 (action=1)
+1216.8s	160	  [FAIL] HumanEval/49: reward=0.14 (action=1)
+1239.7s	161	  [PASS] HumanEval/54: reward=1.00 (action=0)
+1262.0s	162	  [FAIL] HumanEval/66: reward=0.30 (action=1)
+1284.6s	163	  [FAIL] HumanEval/73: reward=0.38 (action=1)
+1307.4s	164	  [PASS] HumanEval/89: reward=1.00 (action=0)
+1329.8s	165	  [FAIL] HumanEval/93: reward=0.00 (action=1)
+1352.3s	166	  [FAIL] HumanEval/111: reward=0.00 (action=1)
+1374.8s	167	  [FAIL] HumanEval/116: reward=0.60 (action=1)
+1397.2s	168	  [FAIL] HumanEval/117: reward=0.29 (action=1)
+1419.4s	169	  [FAIL] HumanEval/135: reward=0.40 (action=1)
+1420.2s	170	Memory saved: memory_20260529_152646.pt
+1420.2s	171	
+1420.2s	172	Session complete: 40.0% (8/20)
+1420.2s	173	Log: session_20260529_152647.json
+1420.2s	174	
+1420.2s	175	── Memory Diagnostics ──
+1420.2s	176	  Layer 4: weight_norm=11.2217
+1420.2s	177	  Layer 8: weight_norm=11.2236
+1420.2s	178	  Layer 16: weight_norm=11.2209
+1420.2s	179	  Layer 24: weight_norm=11.2322
+1420.2s	180	
+1420.2s	181	==================================================
+1420.2s	182	TRAJECTORY COLLECTION — SESSION 4/6
+1420.2s	183	==================================================
+1420.6s	184	Loaded memory: memory_20260529_152646.pt
+1436.2s	185	  [PASS] HumanEval/2: reward=1.00 (action=0)
+1459.6s	186	  [PASS] HumanEval/3: reward=1.00 (action=0)
+1481.8s	187	  [FAIL] HumanEval/5: reward=0.00 (action=1)
+1504.3s	188	  [PASS] HumanEval/8: reward=1.00 (action=0)
+1526.3s	189	  [FAIL] HumanEval/13: reward=0.00 (action=1)
+1548.5s	190	  [FAIL] HumanEval/14: reward=0.00 (action=1)
+1571.2s	191	  [FAIL] HumanEval/18: reward=0.75 (action=0)
+1593.6s	192	  [PASS] HumanEval/24: reward=1.00 (action=0)
+1615.7s	193	  [FAIL] HumanEval/29: reward=0.00 (action=1)
+1639.0s	194	  [PASS] HumanEval/43: reward=1.00 (action=0)
+1661.6s	195	  [FAIL] HumanEval/49: reward=0.14 (action=1)
+1684.4s	196	  [PASS] HumanEval/54: reward=1.00 (action=0)
+1706.7s	197	  [FAIL] HumanEval/66: reward=0.30 (action=1)
+1729.2s	198	  [FAIL] HumanEval/73: reward=0.25 (action=1)
+1752.0s	199	  [PASS] HumanEval/89: reward=1.00 (action=0)
+1774.8s	200	  [PASS] HumanEval/93: reward=1.00 (action=0)
+1797.8s	201	  [PASS] HumanEval/111: reward=1.00 (action=0)
+1820.3s	202	  [FAIL] HumanEval/116: reward=0.00 (action=1)
+1843.6s	203	  [PASS] HumanEval/117: reward=1.00 (action=0)
+1867.0s	204	  [PASS] HumanEval/135: reward=1.00 (action=0)
+1868.0s	205	Memory saved: memory_20260529_153414.pt
+1868.0s	206	
+1868.0s	207	Session complete: 55.0% (11/20)
+1868.0s	208	Log: session_20260529_153415.json
+1868.0s	209	
+1868.0s	210	── Memory Diagnostics ──
+1868.0s	211	  Layer 4: weight_norm=11.2219
+1868.0s	212	  Layer 8: weight_norm=11.2236
+1868.0s	213	  Layer 16: weight_norm=11.2212
+1868.0s	214	  Layer 24: weight_norm=11.2324
+1868.0s	215	
+1868.0s	216	==================================================
+1868.0s	217	TRAJECTORY COLLECTION — SESSION 5/6
+1868.0s	218	==================================================
+1868.5s	219	Loaded memory: memory_20260529_153414.pt
+1886.0s	220	  [PASS] HumanEval/2: reward=1.00 (action=0)
+1908.9s	221	  [PASS] HumanEval/3: reward=1.00 (action=0)
+1931.5s	222	  [PASS] HumanEval/5: reward=1.00 (action=0)
+1954.4s	223	  [PASS] HumanEval/8: reward=1.00 (action=0)
+1976.7s	224	  [PASS] HumanEval/13: reward=1.00 (action=0)
+1998.9s	225	  [FAIL] HumanEval/14: reward=0.00 (action=1)
+2021.5s	226	  [FAIL] HumanEval/18: reward=0.75 (action=0)
+2043.7s	227	  [FAIL] HumanEval/24: reward=0.00 (action=1)
+2066.4s	228	  [PASS] HumanEval/29: reward=1.00 (action=0)
+2089.0s	229	  [FAIL] HumanEval/43: reward=0.56 (action=1)
+2111.2s	230	  [FAIL] HumanEval/49: reward=0.14 (action=1)
+2134.5s	231	  [PASS] HumanEval/54: reward=1.00 (action=0)
+2157.1s	232	  [FAIL] HumanEval/66: reward=0.30 (action=1)
+2179.9s	233	  [FAIL] HumanEval/73: reward=0.25 (action=1)
+2202.9s	234	  [PASS] HumanEval/89: reward=1.00 (action=0)
+2225.1s	235	  [FAIL] HumanEval/93: reward=0.00 (action=1)
+2247.6s	236	  [FAIL] HumanEval/111: reward=0.12 (action=1)
+2270.3s	237	  [FAIL] HumanEval/116: reward=0.00 (action=1)
+2292.8s	238	  [FAIL] HumanEval/117: reward=0.29 (action=1)
+2315.1s	239	  [FAIL] HumanEval/135: reward=0.20 (action=1)
+2316.1s	240	Memory saved: memory_20260529_154142.pt
+2316.1s	241	
+2316.1s	242	Session complete: 40.0% (8/20)
+2316.1s	243	Log: session_20260529_154143.json
+2316.1s	244	
+2316.1s	245	── Memory Diagnostics ──
+2316.1s	246	  Layer 4: weight_norm=11.2222
+2316.1s	247	  Layer 8: weight_norm=11.2239
+2316.1s	248	  Layer 16: weight_norm=11.2214
+2316.1s	249	  Layer 24: weight_norm=11.2327
+2316.1s	250	
+2316.1s	251	==================================================
+2316.1s	252	TRAJECTORY COLLECTION — SESSION 6/6
+2316.1s	253	==================================================
+2316.5s	254	Loaded memory: memory_20260529_154142.pt
+2331.9s	255	  [FAIL] HumanEval/2: reward=0.00 (action=1)
+2355.0s	256	  [PASS] HumanEval/3: reward=1.00 (action=0)
+2377.6s	257	  [FAIL] HumanEval/5: reward=0.00 (action=1)
+2400.6s	258	  [PASS] HumanEval/8: reward=1.00 (action=0)
+2424.8s	259	  [PASS] HumanEval/13: reward=1.00 (action=0)
+2447.9s	260	  [PASS] HumanEval/14: reward=1.00 (action=0)
+2470.9s	261	  [PASS] HumanEval/18: reward=1.00 (action=0)
+2493.4s	262	  [PASS] HumanEval/24: reward=1.00 (action=0)
+2516.1s	263	  [PASS] HumanEval/29: reward=1.00 (action=0)
+2539.4s	264	  [PASS] HumanEval/43: reward=1.00 (action=0)
+2562.3s	265	  [FAIL] HumanEval/49: reward=0.14 (action=1)
+2583.4s	266	  [PASS] HumanEval/54: reward=1.00 (action=0)
+2605.8s	267	  [FAIL] HumanEval/66: reward=0.30 (action=1)
+2629.3s	268	  [PASS] HumanEval/73: reward=1.00 (action=0)
+2652.7s	269	  [PASS] HumanEval/89: reward=1.00 (action=0)
+2675.3s	270	  [FAIL] HumanEval/93: reward=0.00 (action=1)
+2698.0s	271	  [FAIL] HumanEval/111: reward=0.00 (action=1)
+2722.0s	272	  [PASS] HumanEval/116: reward=1.00 (action=0)
+2744.8s	273	  [FAIL] HumanEval/117: reward=0.29 (action=1)
+2763.9s	274	  [FAIL] HumanEval/135: reward=0.20 (action=1)
+2764.6s	275	Memory saved: memory_20260529_154911.pt
+2764.6s	276	
+2764.6s	277	Session complete: 60.0% (12/20)
+2764.6s	278	Log: session_20260529_154912.json
+2764.6s	279	
+2764.6s	280	── Memory Diagnostics ──
+2764.6s	281	  Layer 4: weight_norm=11.2227
+2764.6s	282	  Layer 8: weight_norm=11.2239
+2764.6s	283	  Layer 16: weight_norm=11.2219
+2764.6s	284	  Layer 24: weight_norm=11.2329
+2764.6s	285	
+2764.6s	286	Collected 120 trajectory points.
+2764.6s	287	Computed delayed policy rewards. 26/120 points have non-zero reward.
+2764.8s	288	Training MemoryPolicy via GRPO...
+2764.8s	289	Training on 100 trajectory points
+2765.1s	290	  Epoch   0: loss=-0.0296  [WRITE=0.31, NOOP=0.41, SUPPRESS=0.28]
+2767.1s	291	  Epoch  10: loss=-0.0771  [WRITE=0.02, NOOP=0.97, SUPPRESS=0.02]
+2769.1s	292	  Epoch  20: loss=-0.0201  [WRITE=0.01, NOOP=0.97, SUPPRESS=0.01]
+2771.1s	293	  Epoch  30: loss=-0.0002  [WRITE=0.01, NOOP=0.98, SUPPRESS=0.01]
+2773.2s	294	  Epoch  40: loss=-0.0005  [WRITE=0.02, NOOP=0.96, SUPPRESS=0.02]
+2774.8s	295	  Epoch  49: loss=-0.0012  [WRITE=0.05, NOOP=0.90, SUPPRESS=0.05]
+2774.8s	296	Training complete.
+2774.8s	297	
+2774.8s	298	── Policy Analysis ──
+2774.8s	299	
+2774.8s	300	  Actions by reward range:
+2774.8s	301	    low (0-0.3): [WRITE=0%, NOOP=100%, SUPPRESS=0%]
+2774.8s	302	    mid (0.3-0.7): [WRITE=0%, NOOP=100%, SUPPRESS=0%]
+2774.8s	303	    high (0.7-1.0): [WRITE=0%, NOOP=100%, SUPPRESS=0%]
+2774.8s	304	
+2774.8s	305	  NOOP rate by session (should increase):
+2774.8s	306	    Session 1: 100.0% ████████████████████
+2774.8s	307	    Session 2: 100.0% ████████████████████
+2774.8s	308	    Session 3: 100.0% ████████████████████
+2774.8s	309	    Session 4: 100.0% ████████████████████
+2774.8s	310	    Session 5: 100.0% ████████████████████
+2774.8s	311	    Session 6: 100.0% ████████████████████
+2774.9s	312	
+2774.9s	313	############################################################
+2774.9s	314	  SEED 42
+2774.9s	315	############################################################
+2778.6s	316	Traceback (most recent call last):
+2778.6s	317	  File "<string>", line 1, in <module>
+2778.6s	318	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 131, in execute_notebook
+2778.6s	319	    raise_for_execution_errors(nb, output_path)
+2778.6s	320	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+2778.6s	321	    raise error
+2778.6s	322	papermill.exceptions.PapermillExecutionError: 
+2778.6s	323	---------------------------------------------------------------------------
+2778.6s	324	Exception encountered at "In [11]":
+2778.6s	325	---------------------------------------------------------------------------
+2778.6s	326	TypeError                                 Traceback (most recent call last)
+2778.6s	327	/tmp/ipykernel_23/1096739042.py in <cell line: 0>()
+2778.6s	328	     34 
+2778.6s	329	     35     # Pass the trained policy into SessionManager
+2778.6s	330	---> 36     eval_mgr = SessionManager(model, tokenizer, memory_modules, user_id=user_id, temperature=0.2, policy=policy)
+2778.6s	331	     37 
+2778.6s	332	     38     seed_results = []
+2778.6s	333	
+2778.6s	334	TypeError: SessionManager.__init__() got an unexpected keyword argument 'policy'
+2778.6s	335	
+2780.7s	336	/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+2780.7s	337	  cells[i][c] = re.sub('\\\\\|', '|', cell)
+2780.8s	338	/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+2780.8s	339	  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+2781.5s	340	[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+2781.8s	341	[NbConvertApp] Writing 142824 bytes to __notebook__.ipynb
+2784.1s	342	[NbConvertApp] Converting notebook __notebook__.ipynb to html
+2785.0s	343	[NbConvertApp] Writing 423339 bytes to __results__.htm
