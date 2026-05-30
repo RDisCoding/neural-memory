@@ -17,13 +17,14 @@ import numpy as np
 try:
     from memory_policy import (
         get_policy_features, compute_partial_credit_trend,
-        ACTION_STRENGTHS, WRITE, NOOP
+        ACTION_STRENGTHS, WRITE, NOOP, SUPPRESS
     )
 except ImportError:
     # Handle environment where memory_policy is missing temporarily
-    ACTION_STRENGTHS = {1: 1.0, 4: 0.0}
+    ACTION_STRENGTHS = {0: 1.0, 1: 0.0, 2: -0.5}
     WRITE = 0
     NOOP = 1
+    SUPPRESS = 2
 
 
 class SessionManager:
