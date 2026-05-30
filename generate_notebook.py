@@ -174,6 +174,7 @@ for idx, mem in memory_modules.items():
     initial_mem_states[idx] = {
         'layers': {k: v.clone() for k, v in mem.layers.state_dict().items()},
         'W_sa': {k: v.clone() for k, v in mem.W_sa.state_dict().items()},
+        'reward_head': {k: v.clone() for k, v in mem.reward_head.state_dict().items()},
         'momentum': {k: v.clone() for k, v in mem.momentum.items()},
     }
 
@@ -187,6 +188,7 @@ for seed in SEEDS:
     for idx, mem in memory_modules.items():
         mem.layers.load_state_dict({k: v.clone() for k, v in initial_mem_states[idx]['layers'].items()})
         mem.W_sa.load_state_dict({k: v.clone() for k, v in initial_mem_states[idx]['W_sa'].items()})
+        mem.reward_head.load_state_dict({k: v.clone() for k, v in initial_mem_states[idx]['reward_head'].items()})
         mem.momentum = {k: v.clone() for k, v in initial_mem_states[idx]['momentum'].items()}
         mem.phase1_enabled = False  # Ensure phase 1 is disabled during evaluation too
 

@@ -41,6 +41,12 @@ class NeuralMemoryModule(nn.Module):
         # Situation-action encoder for reward-conditioned phase
         self.W_sa = nn.Linear(dim * 2, dim)
 
+        # Dedicated scalar reward prediction head (Phase 2)
+        # Avoids the 1/dim gradient dilution from layers().mean()
+        self.reward_head = nn.Linear(dim, 1)
+        nn.init.zeros_(self.reward_head.weight)
+        nn.init.zeros_(self.reward_head.bias)
+
         # Momentum buffers for each parameter in self.layers
         self.momentum = {
             name: torch.zeros_like(p)
@@ -130,51 +136,48 @@ class NeuralMemoryModule(nn.Module):
 
     def reward_update(self, state_vec: torch.Tensor,
                       action_vec: torch.Tensor,
-                      actual_reward: float):
+                      actual_reward: float,
+                      lr: float = 0.01):
         """
         Phase 2 — Reward-conditioned update.
         Called ONCE after task completion when reward is known.
-        Updates M_θ via TD error: (actual_reward − predicted_reward)²
+        Updates the reward_head via TD error: (actual_reward − predicted_reward)²
+        
+        Uses a dedicated scalar reward_head instead of layers().mean() to avoid
+        the 1/dim gradient dilution problem that caused frozen weights.
         """
-        # Ensure vectors are on the correct device for THIS specific memory module
-        # (Needed because layers might be spread across cuda:0 and cuda:1)
         device = self.W_sa.weight.device
         state_vec = state_vec.to(device)
         action_vec = action_vec.to(device)
 
-        # Only skip if there's genuinely no learning signal
-        # (both reward near-zero AND prediction already near-zero)
-
         with torch.enable_grad():
             sa = self.W_sa(torch.cat([
                 state_vec.detach(), action_vec.detach()
-            ]))
-    
-            predicted_r = self.layers(sa).mean()
+            ])).detach()  # detach so W_sa is not updated through reward_head
+
+            # Use reward_head (dim → 1) instead of layers(sa).mean()
+            predicted_r = self.reward_head(sa).squeeze()
             td_error = actual_reward - predicted_r.item()
-    
+
             if abs(td_error) < 0.01:
-                return  # memory already accurate
-    
-            loss = F.mse_loss(predicted_r.float(), torch.tensor(actual_reward, device=predicted_r.device, dtype=torch.float32))
-            
+                return  # reward head already accurate
+
+            target = torch.tensor(actual_reward, device=predicted_r.device, dtype=torch.float32)
+            loss = (predicted_r.float() - target) ** 2
+
             if torch.isnan(loss) or torch.isinf(loss):
                 return
-                
+
             grads = torch.autograd.grad(
-                loss, self.layers.parameters(),
+                loss, list(self.reward_head.parameters()),
                 create_graph=False, retain_graph=False
             )
 
         with torch.no_grad():
-            for param, grad in zip(self.layers.parameters(), grads):
+            for param, grad in zip(self.reward_head.parameters(), grads):
                 if torch.isnan(grad).any() or torch.isinf(grad).any():
                     continue
-                grad_clipped = grad.clamp(-0.5, 0.5)
-                param.sub_(self.lr_reward * grad_clipped)
-                param.clamp_(-1.0, 1.0)
-
-        self._clamp_weight_norms()
+                param.sub_(lr * grad)
 
     def reward_update_with_strength(self, state_vec: torch.Tensor,
                                     action_vec: torch.Tensor,
@@ -242,12 +245,15 @@ class NeuralMemoryModule(nn.Module):
         return {
             'layers': self.layers.state_dict(),
             'W_sa': self.W_sa.state_dict(),
+            'reward_head': self.reward_head.state_dict(),
             'momentum': {k: v.clone() for k, v in self.momentum.items()}
         }
 
     def load_state(self, state: dict):
         self.layers.load_state_dict(state['layers'])
         self.W_sa.load_state_dict(state['W_sa'])
+        if 'reward_head' in state:
+            self.reward_head.load_state_dict(state['reward_head'])
         self.momentum = {k: v.clone() for k, v in state['momentum'].items()}
 
     # ─────────────────────────────────────────────
@@ -353,13 +359,13 @@ def test_reward_learning(dim=64):
         (torch.randn(dim), torch.randn(dim), 0.5),
     ]
 
-    for _ in range(500):
+    for _ in range(2000):
         for s, a, r in pairs:
             mem.reward_update(s, a, r)
 
     for i, (s, a, expected_r) in enumerate(pairs):
         sa = mem.W_sa(torch.cat([s.detach(), a.detach()]))
-        predicted = mem.layers(sa).mean().item()
+        predicted = mem.reward_head(sa).squeeze().item()
         assert abs(predicted - expected_r) < 0.15, (
             f"FAIL reward_learning pair {i}: "
             f"predicted={predicted:.3f}, expected={expected_r}"
@@ -386,7 +392,7 @@ def test_generalisation(dim=64):
 
     def pred(s, a):
         sa = mem.W_sa(torch.cat([s.detach(), a.detach()]))
-        return mem.layers(sa).mean().item()
+        return mem.reward_head(sa).squeeze().item()
 
     r_base    = pred(base_s, base_a)
     r_similar = pred(similar_s, similar_a)
