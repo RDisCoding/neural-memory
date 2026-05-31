@@ -86,8 +86,9 @@ def main():
         
     # 5. Download outputs
     print("\nRun finished! Downloading outputs...")
-    output_dir = Path("kaggle_outputs")
-    output_dir.mkdir(exist_ok=True)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    output_dir = Path(f"kaggle_outputs/run_{timestamp}")
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     subprocess.run(["kaggle", "kernels", "output", kernel_id, "-p", str(output_dir)])
     print(f"\nDone! Outputs downloaded to {output_dir.absolute()}")
