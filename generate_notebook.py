@@ -21,15 +21,26 @@ if torch.cuda.is_available():
     print(f"GPU: {gpu_name} (sm_{cap[0]}{cap[1]})")
     if cap[0] < 7:
         # P100 (sm_60) is not supported by PyTorch >= 2.2
-        # Install PyTorch 2.1.2 which still supports sm_60
+        # Install PyTorch 2.1.2 from cu118 index which still supports sm_60
         print(f"WARNING: {gpu_name} has sm_{cap[0]}{cap[1]}, not supported by installed PyTorch.")
-        print("Installing PyTorch 2.1.2 with P100 support...")
-        subprocess.run(
+        print("Installing PyTorch 2.1.2+cu118 with P100 support...")
+        result = subprocess.run(
             [sys.executable, "-m", "pip", "install", "-q",
-             "torch==2.1.2", "torchvision==0.16.2", "--index-url",
-             "https://download.pytorch.org/whl/cu121"],
-            check=True
+             "torch==2.1.2+cu118", "torchvision==0.16.2+cu118", "--index-url",
+             "https://download.pytorch.org/whl/cu118"],
+            capture_output=True, text=True
         )
+        if result.returncode != 0:
+            print("PyTorch downgrade failed. Trying torch==2.1.2 from default index...")
+            result2 = subprocess.run(
+                [sys.executable, "-m", "pip", "install", "-q", "torch==2.1.2"],
+                capture_output=True, text=True
+            )
+            if result2.returncode != 0:
+                print("ERROR: Could not install P100-compatible PyTorch.")
+                print("Please go to your Kaggle notebook settings and set Accelerator to 'GPU T4 x2'.")
+                print("Then re-run this notebook. The T4 is compatible with all PyTorch versions.")
+                raise RuntimeError("GPU incompatible and PyTorch downgrade failed. Set accelerator to T4 in Kaggle settings.")
         # Reimport torch with the new version
         import importlib
         importlib.reload(torch)
