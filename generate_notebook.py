@@ -260,6 +260,25 @@ size_mb = os.path.getsize(ZIP_PATH) / 1e6
 print(f"Zipped - {ZIP_PATH}  ({size_mb:.1f} MB)")
 '''))
 
+nb.metadata = {
+    "kernelspec": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+    },
+    "language_info": {
+        "codemirror_mode": {
+            "name": "ipython",
+            "version": 3
+        },
+        "file_extension": ".py",
+        "mimetype": "text/x-python",
+        "name": "python",
+        "nbconvert_exporter": "python",
+        "pygments_lexer": "ipython3",
+        "version": "3.10.12"
+    }
+}
 nb.cells = cells
 with open('d:/X/notebooks/x-phase-3.ipynb', 'w', encoding='utf-8') as f:
     nbf.write(nb, f)
