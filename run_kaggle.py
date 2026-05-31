@@ -41,6 +41,9 @@ def main():
     subprocess.run([sys.executable, "generate_notebook.py"], check=True)
     
     # 2. Create kernel-metadata.json
+    # IMPORTANT: "machine_shape" is Kaggle's internal field for GPU selection
+    # "Gpu" = P100 (broken with new PyTorch), "GpuT4x2" = T4 x2 (works)
+    # This field is only respected AFTER setting T4 once in the web UI
     metadata = {
       "id": kernel_id,
       "title": "neural-memory-phase3",
@@ -49,8 +52,9 @@ def main():
       "kernel_type": "notebook",
       "is_private": "true",
       "enable_gpu": "true",
-      "accelerator": "nvidiaTeslaT4",
       "enable_internet": "true",
+      "accelerator": "nvidiaTeslaT4",
+      "machine_shape": "GpuT4x2",
       "dataset_sources": [],
       "competition_sources": [],
       "kernel_sources": [],
