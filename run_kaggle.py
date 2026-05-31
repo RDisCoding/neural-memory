@@ -90,7 +90,16 @@ def main():
     output_dir = Path(f"kaggle_outputs/run_{timestamp}")
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    subprocess.run(["kaggle", "kernels", "output", kernel_id, "-p", str(output_dir)])
+    # Capture output to prevent charmap encoding crashes on Windows console
+    result = subprocess.run(
+        ["kaggle", "kernels", "output", kernel_id, "-p", str(output_dir)],
+        capture_output=True, text=True, errors="replace"
+    )
+    if result.stdout:
+        print(result.stdout)
+    if result.stderr:
+        print(result.stderr)
+        
     print(f"\nDone! Outputs downloaded to {output_dir.absolute()}")
 
 if __name__ == "__main__":

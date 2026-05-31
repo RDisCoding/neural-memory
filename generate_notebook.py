@@ -59,18 +59,19 @@ import memory_policy
 print("memory_policy imported successfully.")
 '''))
 
-cells.append(nbf.v4.new_code_cell('''# -- CELL 4: Load Gemma 2B --
+# Load local HF_TOKEN from .env to inject into the notebook
+local_hf_token = "YOUR_HF_TOKEN"
+if os.path.exists(".env"):
+    with open(".env", "r") as f:
+        for line in f:
+            if line.startswith("HF_TOKEN="):
+                local_hf_token = line.strip().split("=")[1].strip('"\'')
+
+cells.append(nbf.v4.new_code_cell(f'''# -- CELL 4: Load Gemma 2B --
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from huggingface_hub import login
 
-import os
-try:
-    from kaggle_secrets import UserSecretsClient
-    user_secrets = UserSecretsClient()
-    HF_TOKEN = user_secrets.get_secret("HF_TOKEN")
-except Exception:
-    HF_TOKEN = os.environ.get("HF_TOKEN", "YOUR_HF_TOKEN")
-
+HF_TOKEN = "{local_hf_token}"
 MODEL_ID = "google/gemma-2-2b-it"
 
 login(token=HF_TOKEN, add_to_git_credential=False)
