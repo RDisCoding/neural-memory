@@ -64,7 +64,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from huggingface_hub import login
 
 import os
-HF_TOKEN = os.environ.get("HF_TOKEN", "YOUR_HF_TOKEN")
+try:
+    from kaggle_secrets import UserSecretsClient
+    user_secrets = UserSecretsClient()
+    HF_TOKEN = user_secrets.get_secret("HF_TOKEN")
+except Exception:
+    HF_TOKEN = os.environ.get("HF_TOKEN", "YOUR_HF_TOKEN")
+
 MODEL_ID = "google/gemma-2-2b-it"
 
 login(token=HF_TOKEN, add_to_git_credential=False)
