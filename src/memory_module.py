@@ -155,6 +155,9 @@ class NeuralMemoryModule(nn.Module):
                 state_vec.detach(), action_vec.detach()
             ])).detach()  # detach so W_sa is not updated through reward_head
 
+            # Normalize to prevent float16 overflow when hidden states have large norms
+            sa = F.normalize(sa, dim=-1)
+
             # Use reward_head (dim → 1) instead of layers(sa).mean()
             predicted_r = self.reward_head(sa).squeeze()
             td_error = actual_reward - predicted_r.item()
@@ -203,9 +206,11 @@ class NeuralMemoryModule(nn.Module):
         with torch.enable_grad():
             sa = self.W_sa(torch.cat([
                 state_vec.detach(), action_vec.detach()
-            ]))
+            ])).detach()
 
-            predicted_r = self.layers(sa).mean()
+            sa = F.normalize(sa, dim=-1)
+
+            predicted_r = self.reward_head(sa).squeeze()
             td_error = actual_reward - predicted_r.item()
 
             if abs(td_error) < 0.01:
@@ -221,19 +226,17 @@ class NeuralMemoryModule(nn.Module):
                 return
 
             grads = torch.autograd.grad(
-                loss, self.layers.parameters(),
+                loss, list(self.reward_head.parameters()),
                 create_graph=False, retain_graph=False
             )
 
         effective_lr = self.lr_reward * strength
 
         with torch.no_grad():
-            for param, grad in zip(self.layers.parameters(), grads):
+            for param, grad in zip(self.reward_head.parameters(), grads):
                 if torch.isnan(grad).any() or torch.isinf(grad).any():
                     continue
-                grad_clipped = grad.clamp(-0.5, 0.5)
-                param.sub_(effective_lr * grad_clipped)
-                param.clamp_(-1.0, 1.0)
+                param.sub_(effective_lr * grad)
 
         self._clamp_weight_norms()
 
@@ -365,6 +368,7 @@ def test_reward_learning(dim=64):
 
     for i, (s, a, expected_r) in enumerate(pairs):
         sa = mem.W_sa(torch.cat([s.detach(), a.detach()]))
+        sa = F.normalize(sa, dim=-1)
         predicted = mem.reward_head(sa).squeeze().item()
         assert abs(predicted - expected_r) < 0.15, (
             f"FAIL reward_learning pair {i}: "
@@ -392,6 +396,7 @@ def test_generalisation(dim=64):
 
     def pred(s, a):
         sa = mem.W_sa(torch.cat([s.detach(), a.detach()]))
+        sa = F.normalize(sa, dim=-1)
         return mem.reward_head(sa).squeeze().item()
 
     r_base    = pred(base_s, base_a)
