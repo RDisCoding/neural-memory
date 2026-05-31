@@ -31,6 +31,11 @@ def main():
 
     kernel_id = f"{username}/{KERNEL_SLUG}"
     
+    # 0. Upgrade Kaggle CLI to ensure accelerator field support
+    print("Upgrading Kaggle CLI...")
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "--upgrade", "kaggle"],
+                   capture_output=True, text=True, errors="replace")
+    
     # 1. Regenerate the notebook to make sure it's up to date
     print("Regenerating notebook...")
     subprocess.run([sys.executable, "generate_notebook.py"], check=True)
@@ -44,6 +49,7 @@ def main():
       "kernel_type": "notebook",
       "is_private": "true",
       "enable_gpu": "true",
+      "accelerator": "nvidiaTeslaT4",
       "enable_internet": "true",
       "dataset_sources": [],
       "competition_sources": [],

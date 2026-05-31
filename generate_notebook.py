@@ -10,8 +10,36 @@ cells.append(nbf.v4.new_markdown_cell('''# Phase 3: MemRL Policy Network
 **Runtime:** GPU (T4 16 GB), ~6 hours total.
 '''))
 
-cells.append(nbf.v4.new_code_cell('''# -- CELL 1: Install dependencies + create directory structure --
+cells.append(nbf.v4.new_code_cell('''# -- CELL 1: GPU compatibility check + Install dependencies --
 import subprocess, sys
+
+# First check if the assigned GPU is compatible with installed PyTorch
+import torch
+if torch.cuda.is_available():
+    cap = torch.cuda.get_device_capability()
+    gpu_name = torch.cuda.get_device_name(0)
+    print(f"GPU: {gpu_name} (sm_{cap[0]}{cap[1]})")
+    if cap[0] < 7:
+        # P100 (sm_60) is not supported by PyTorch >= 2.2
+        # Install PyTorch 2.1.2 which still supports sm_60
+        print(f"WARNING: {gpu_name} has sm_{cap[0]}{cap[1]}, not supported by installed PyTorch.")
+        print("Installing PyTorch 2.1.2 with P100 support...")
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "-q",
+             "torch==2.1.2", "torchvision==0.16.2", "--index-url",
+             "https://download.pytorch.org/whl/cu121"],
+            check=True
+        )
+        # Reimport torch with the new version
+        import importlib
+        importlib.reload(torch)
+        print(f"PyTorch downgraded to {torch.__version__} (P100 compatible)")
+    else:
+        print(f"GPU compatible with PyTorch {torch.__version__}")
+else:
+    print("No GPU detected, running on CPU")
+
+# Install remaining dependencies
 subprocess.run(
     [sys.executable, "-m", "pip", "install", "-q",
      "accelerate", "datasets", "faiss-cpu"],
@@ -29,6 +57,7 @@ for d in ["src", "problems", "memory_states", "results", "logs"]:
 
 print("Env ready. CUDA:", torch.cuda.is_available())
 print("Device:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
+print("PyTorch:", torch.__version__)
 '''))
 
 # Embed both src/ and problems/ directly into the notebook
@@ -79,7 +108,7 @@ login(token=HF_TOKEN, add_to_git_credential=False)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
-    torch_dtype=torch.float16,
+    dtype=torch.float16,
     device_map="auto"
 )
 print("Model loaded. Device:", next(model.parameters()).device)
