@@ -284,6 +284,13 @@ nb.metadata = {
         "nbconvert_exporter": "python",
         "pygments_lexer": "ipython3",
         "version": "3.10.12"
+    },
+    "kaggle": {
+        "accelerator": "nvidiaTeslaT4",
+        "dataSources": [],
+        "isInternetEnabled": True,
+        "language": "python",
+        "sourceType": "notebook"
     }
 }
 nb.cells = cells
